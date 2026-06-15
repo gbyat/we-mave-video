@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WE Mave Video 1.1.0\n"
+"Project-Id-Version: WE Mave Video 1.1.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/we-mave-video\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: webentwicklerin, Gabriele Laesser\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-15T09:59:03+00:00\n"
+"POT-Creation-Date: 2026-06-15T10:04:38+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -64,31 +64,31 @@ msgid "Downloaded player bundle appears incomplete or invalid."
 msgstr "Das heruntergeladene Player-Bundle scheint unvollständig oder ungültig zu sein."
 
 #. translators: 1: file path, 2: HTTP status code
-#: includes/admin/asset-updater.php:417
+#: includes/admin/asset-updater.php:414
 #, php-format
 msgid "Could not download %1$s (HTTP %2$d)."
 msgstr "%1$s konnte nicht heruntergeladen werden (HTTP %2$d)."
 
 #. translators: %s: file path
-#: includes/admin/asset-updater.php:430
+#: includes/admin/asset-updater.php:427
 #, php-format
 msgid "Downloaded file %s appears empty."
 msgstr "Die heruntergeladene Datei %s scheint leer zu sein."
 
 #. translators: %s: directory path
-#: includes/admin/asset-updater.php:442
+#: includes/admin/asset-updater.php:439
 #, php-format
 msgid "Could not create directory %s."
 msgstr "Verzeichnis %s konnte nicht erstellt werden."
 
 #. translators: %s: file path
-#: includes/admin/asset-updater.php:454
+#: includes/admin/asset-updater.php:451
 #, php-format
 msgid "Could not write file %s."
 msgstr "Datei %s konnte nicht geschrieben werden."
 
 #. translators: %d: HTTP status code
-#: includes/admin/asset-updater.php:487
+#: includes/admin/asset-updater.php:484
 #, php-format
 msgid "Could not download the player bundle (HTTP %d)."
 msgstr "Das Player-Bundle konnte nicht heruntergeladen werden (HTTP %d)."
@@ -743,7 +743,7 @@ msgstr "Nur in HTML-/Code-Modulen verwenden. Das Plugin lädt das Skript automat
 msgid "Never"
 msgstr "Nie"
 
-#: includes/core/plugin-updater.php:219
+#: includes/core/plugin-updater.php:221
 msgid "No changelog available."
 msgstr "Kein Changelog verfügbar."
 
