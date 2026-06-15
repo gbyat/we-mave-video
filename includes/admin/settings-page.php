@@ -394,33 +394,6 @@ final class Settings_Page {
 			<form method="post" action="options.php">
 				<?php settings_fields( 'we_mave_video' ); ?>
 
-				<h2><?php esc_html_e( 'Plugin updates', 'we-mave-video' ); ?></h2>
-				<table class="form-table" role="presentation">
-					<tr>
-						<th scope="row"><label for="we-mave-github-updates"><?php esc_html_e( 'GitHub auto updates', 'we-mave-video' ); ?></label></th>
-						<td>
-							<select id="we-mave-github-updates" name="<?php echo esc_attr( Options::OPTION_SETTINGS ); ?>[github_updates_enabled]">
-								<option value="no" <?php selected( $settings['github_updates_enabled'], 'no' ); ?>><?php esc_html_e( 'Disabled', 'we-mave-video' ); ?></option>
-								<option value="yes" <?php selected( $settings['github_updates_enabled'], 'yes' ); ?>><?php esc_html_e( 'Enabled', 'we-mave-video' ); ?></option>
-							</select>
-							<p class="description">
-								<?php
-								echo wp_kses_post(
-									sprintf(
-										/* translators: %s: GitHub repository slug */
-										__(
-											'Check for plugin updates from <a href="https://github.com/%s/releases" target="_blank" rel="noopener noreferrer">GitHub releases</a>. This updates the WordPress plugin only, not the self-hosted mave components.',
-											'we-mave-video'
-										),
-										esc_html( WE_MAVE_VIDEO_GITHUB_REPO )
-									)
-								);
-								?>
-							</p>
-						</td>
-					</tr>
-				</table>
-
 				<h2><?php esc_html_e( 'Update schedule', 'we-mave-video' ); ?></h2>
 				<table class="form-table" role="presentation">
 					<tr>
@@ -563,6 +536,33 @@ final class Settings_Page {
 					<tr>
 						<th scope="row"><label for="we-mave-height"><?php esc_html_e( 'Height (px)', 'we-mave-video' ); ?></label></th>
 						<td><input id="we-mave-height" type="number" min="0" class="small-text" name="<?php echo esc_attr( Options::OPTION_SETTINGS ); ?>[player_defaults][height]" value="<?php echo esc_attr( (string) $defaults['height'] ); ?>" /></td>
+					</tr>
+				</table>
+
+				<h2><?php esc_html_e( 'Plugin updates', 'we-mave-video' ); ?></h2>
+				<table class="form-table" role="presentation">
+					<tr>
+						<th scope="row"><label for="we-mave-github-updates"><?php esc_html_e( 'GitHub auto updates', 'we-mave-video' ); ?></label></th>
+						<td>
+							<select id="we-mave-github-updates" name="<?php echo esc_attr( Options::OPTION_SETTINGS ); ?>[github_updates_enabled]">
+								<option value="yes" <?php selected( $settings['github_updates_enabled'], 'yes' ); ?>><?php esc_html_e( 'Enabled', 'we-mave-video' ); ?></option>
+								<option value="no" <?php selected( $settings['github_updates_enabled'], 'no' ); ?>><?php esc_html_e( 'Disabled', 'we-mave-video' ); ?></option>
+							</select>
+							<p class="description">
+								<?php
+								echo wp_kses_post(
+									sprintf(
+										/* translators: %s: GitHub repository slug */
+										__(
+											'Check for plugin updates from <a href="https://github.com/%s/releases" target="_blank" rel="noopener noreferrer">GitHub releases</a>. This updates the WordPress plugin only, not the self-hosted mave components.',
+											'we-mave-video'
+										),
+										esc_html( WE_MAVE_VIDEO_GITHUB_REPO )
+									)
+								);
+								?>
+							</p>
+						</td>
 					</tr>
 				</table>
 

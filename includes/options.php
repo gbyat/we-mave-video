@@ -32,7 +32,7 @@ final class Options {
 			'auto_update'     => true,
 			'load_globally'          => false,
 			'load_from_cdn'          => false,
-			'github_updates_enabled' => 'no',
+			'github_updates_enabled' => 'yes',
 			'player_defaults' => array(
 				'aspect_ratio' => '16/9',
 				'autoplay'     => 'false',
