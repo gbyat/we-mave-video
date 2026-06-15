@@ -1,0 +1,74 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "we-mave-video/player",
+	"version": "1.0.0",
+	"title": "Mave Player",
+	"category": "embed",
+	"icon": "video-alt3",
+	"description": "Embed a mave.io hosted video with the self-hosted player.",
+	"textdomain": "we-mave-video",
+	"attributes": {
+		"embedId": {
+			"type": "string",
+			"default": ""
+		},
+		"aspectRatio": {
+			"type": "string",
+			"default": ""
+		},
+		"width": {
+			"type": "string",
+			"default": ""
+		},
+		"height": {
+			"type": "string",
+			"default": ""
+		},
+		"autoplay": {
+			"type": "string",
+			"default": ""
+		},
+		"controls": {
+			"type": "string",
+			"default": ""
+		},
+		"color": {
+			"type": "string",
+			"default": ""
+		},
+		"opacity": {
+			"type": "string",
+			"default": ""
+		},
+		"loop": {
+			"type": "boolean",
+			"default": false
+		},
+		"poster": {
+			"type": "string",
+			"default": ""
+		},
+		"subtitles": {
+			"type": "string",
+			"default": ""
+		},
+		"theme": {
+			"type": "string",
+			"default": ""
+		},
+		"quality": {
+			"type": "string",
+			"default": ""
+		},
+		"audiotracks": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"editorScript": "file:./index.js"
+}

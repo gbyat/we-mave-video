@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<ruleset name="we-mave-video">
+	<description>PHPCS ruleset for we Mave Video.</description>
+
+	<file>we-mave-video.php</file>
+	<file>uninstall.php</file>
+	<file>includes</file>
+
+	<rule ref="WordPress-Extra"/>
+	<rule ref="WordPress.Files.FileName"/>
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="we_mave_video"/>
+				<element value="Webentwicklerin\WeMaveVideo"/>
+				<element value="WE_MAVE_VIDEO"/>
+			</property>
+		</properties>
+	</rule>
+
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/assets/vendor/*</exclude-pattern>
+</ruleset>
