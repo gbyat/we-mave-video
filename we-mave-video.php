@@ -4,7 +4,7 @@
  * Plugin Name:       WE Mave Video
  * Plugin URI:        https://github.com/gbyat/we-mave-video
  * Description:       Self-hosted mave.io video player with shortcode, snippet generator, and optional block.
- * Version: 1.0.4
+ * Version: 1.1.0
  * Requires at least: 6.5
  * Requires PHP:      8.0
  * Author:            webentwicklerin, Gabriele Laesser
@@ -22,7 +22,7 @@ if (! defined('ABSPATH')) {
 	exit;
 }
 
-define( 'WE_MAVE_VIDEO_VERSION', '1.0.4' );
+define( 'WE_MAVE_VIDEO_VERSION', '1.1.0' );
 define('WE_MAVE_VIDEO_FILE', __FILE__);
 define('WE_MAVE_VIDEO_PATH', plugin_dir_path(__FILE__));
 define('WE_MAVE_VIDEO_URL', plugin_dir_url(__FILE__));

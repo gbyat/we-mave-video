@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-06-15
+
+- Implement Real Cookie Banner integration for mave player embeds
+- Add Borlabs Cookie integration for mave player embeds
+
 ## [1.0.4] - 2026-06-15
 
 - Enable GitHub auto updates by default and restore settings page section for managing update preferences.
@@ -42,3 +47,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [1.0.3]: https://github.com/gbyat/we-mave-video/releases/tag/v1.0.3
 
 [1.0.4]: https://github.com/gbyat/we-mave-video/releases/tag/v1.0.4
+
+[1.1.0]: https://github.com/gbyat/we-mave-video/releases/tag/v1.1.0
