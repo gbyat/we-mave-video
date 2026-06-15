@@ -41,7 +41,41 @@ final class Vendor_Storage {
 	public static function get_root_url(): string {
 		$uploads = wp_upload_dir();
 
-		return trailingslashit( $uploads['baseurl'] ) . self::UPLOADS_SUBDIR . '/';
+		if ( ! empty( $uploads['error'] ) ) {
+			return '';
+		}
+
+		return set_url_scheme( trailingslashit( $uploads['baseurl'] ) . self::UPLOADS_SUBDIR . '/' );
+	}
+
+	/**
+	 * Public URL to an installed entry file in uploads.
+	 *
+	 * @param string $version Installed package version.
+	 * @param string $entry   Entry filename.
+	 * @return string
+	 */
+	public static function get_entry_public_url( string $version, string $entry ): string {
+		$version = sanitize_file_name( $version );
+		$entry   = basename( wp_normalize_path( $entry ) );
+
+		if ( '' === $version || '' === $entry ) {
+			return '';
+		}
+
+		$install_path = self::get_version_path( $version );
+		if ( ! self::install_path_is_usable( $install_path, $entry ) ) {
+			return '';
+		}
+
+		$uploads = wp_upload_dir();
+		if ( ! empty( $uploads['error'] ) ) {
+			return '';
+		}
+
+		$relative = self::UPLOADS_SUBDIR . '/' . $version . '/' . $entry;
+
+		return set_url_scheme( trailingslashit( $uploads['baseurl'] ) . $relative );
 	}
 
 	/**
@@ -84,22 +118,52 @@ final class Vendor_Storage {
 	public static function path_to_public_url( string $file_path ): string {
 		$file_path = wp_normalize_path( $file_path );
 		$uploads   = wp_upload_dir();
-		$basedir   = wp_normalize_path( (string) $uploads['basedir'] );
 
-		if ( str_starts_with( $file_path, $basedir ) ) {
-			$relative = ltrim( substr( $file_path, strlen( $basedir ) ), '/' );
+		if ( ! empty( $uploads['error'] ) ) {
+			return '';
+		}
 
-			return trailingslashit( $uploads['baseurl'] ) . $relative;
+		$basedir = wp_normalize_path( (string) $uploads['basedir'] );
+		$relative = self::path_relative_to_base( $file_path, $basedir );
+
+		if ( '' !== $relative ) {
+			return set_url_scheme( trailingslashit( $uploads['baseurl'] ) . $relative );
 		}
 
 		$plugin_path = wp_normalize_path( WE_MAVE_VIDEO_PATH );
-		if ( str_starts_with( $file_path, $plugin_path ) ) {
-			$relative = ltrim( substr( $file_path, strlen( $plugin_path ) ), '/' );
+		$relative    = self::path_relative_to_base( $file_path, $plugin_path );
 
-			return trailingslashit( WE_MAVE_VIDEO_URL ) . $relative;
+		if ( '' !== $relative ) {
+			return set_url_scheme( trailingslashit( WE_MAVE_VIDEO_URL ) . $relative );
 		}
 
 		return '';
+	}
+
+	/**
+	 * Get the path relative to a base directory.
+	 *
+	 * @param string $path Absolute path.
+	 * @param string $base Base directory.
+	 * @return string
+	 */
+	private static function path_relative_to_base( string $path, string $base ): string {
+		$path = wp_normalize_path( $path );
+		$base = untrailingslashit( wp_normalize_path( $base ) );
+
+		if ( '' === $base ) {
+			return '';
+		}
+
+		if ( PHP_OS_FAMILY === 'Windows' ) {
+			if ( 0 !== stripos( $path, $base ) ) {
+				return '';
+			}
+		} elseif ( ! str_starts_with( $path, $base . '/' ) && $path !== $base ) {
+			return '';
+		}
+
+		return ltrim( substr( $path, strlen( $base ) ), '/' );
 	}
 
 	/**
@@ -108,9 +172,21 @@ final class Vendor_Storage {
 	 * @return void
 	 */
 	public static function repair_installation_state(): void {
-		$asset = Options::get_asset();
-		$path  = (string) ( $asset['path'] ?? '' );
-		$entry = (string) ( $asset['entry'] ?? 'mave-components.esm.js' );
+		$asset   = Options::get_asset();
+		$path    = (string) ( $asset['path'] ?? '' );
+		$entry   = (string) ( $asset['entry'] ?? 'mave-components.esm.js' );
+		$version = (string) ( $asset['version'] ?? '' );
+
+		if ( '' !== $version ) {
+			$uploads_path = self::get_version_path( $version );
+			if ( self::install_path_is_usable( $uploads_path, $entry ) ) {
+				if ( $path !== $uploads_path ) {
+					$asset['path'] = $uploads_path;
+					Options::update_asset( $asset );
+				}
+				return;
+			}
+		}
 
 		if ( '' !== $path && self::install_path_is_usable( $path, $entry ) ) {
 			return;

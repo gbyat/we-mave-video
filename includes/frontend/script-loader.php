@@ -1,6 +1,6 @@
 <?php
 /**
- * Enqueues the self-hosted mave components module.
+ * Prints the self-hosted mave components module in the footer.
  *
  * @package Webentwicklerin\WeMaveVideo
  */
@@ -19,15 +19,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Loads the local ESM entry when a player is present.
+ * Loads the mave ESM entry when a player is present.
+ *
+ * Uses a direct script tag in wp_footer (as in 1.0.4). wp_enqueue_script with
+ * type="module" is unreliable when registered late in the footer.
  */
 final class Script_Loader {
-
-	public const SCRIPT_HANDLE = 'we-mave-video-mave-components';
-
-	public const BORLABS_LOADER_HANDLE = 'we-mave-video-borlabs';
-
-	public const RCB_LOADER_HANDLE = 'we-mave-video-rcb';
 
 	private static bool $required = false;
 
@@ -35,7 +32,7 @@ final class Script_Loader {
 
 	private static bool $rcb_deferred = false;
 
-	private static bool $enqueued = false;
+	private static bool $printed = false;
 
 	/**
 	 * Register hooks.
@@ -43,8 +40,8 @@ final class Script_Loader {
 	 * @return void
 	 */
 	public function register(): void {
-		// Footer hook: shortcodes and blocks run before footer, so requirements are known here.
-		add_action( 'wp_footer', array( $this, 'enqueue_scripts' ), 1 );
+		// Priority 20: shortcodes/blocks run before footer; print after core footer scripts.
+		add_action( 'wp_footer', array( $this, 'print_scripts' ), 20 );
 	}
 
 	/**
@@ -95,12 +92,12 @@ final class Script_Loader {
 	}
 
 	/**
-	 * Register and enqueue the player module in the footer.
+	 * Print player scripts in the footer.
 	 *
 	 * @return void
 	 */
-	public function enqueue_scripts(): void {
-		if ( self::$enqueued ) {
+	public function print_scripts(): void {
+		if ( self::$printed ) {
 			return;
 		}
 
@@ -115,27 +112,32 @@ final class Script_Loader {
 			return;
 		}
 
-		self::$enqueued = true;
+		self::$printed = true;
 
 		if ( Borlabs_Cookie::is_enabled() && self::$borlabs_deferred ) {
-			$this->enqueue_borlabs_deferred_loader( $src );
+			$this->print_borlabs_deferred_loader( $src );
 			return;
 		}
 
 		if ( Real_Cookie_Banner::is_enabled() && self::$rcb_deferred ) {
-			$this->enqueue_rcb_deferred_loader( $src );
+			$this->print_rcb_deferred_loader( $src );
 			return;
 		}
 
-		wp_register_script(
-			self::SCRIPT_HANDLE,
-			$src,
-			array(),
-			WE_MAVE_VIDEO_VERSION,
-			true
+		$this->print_module_script( $src );
+	}
+
+	/**
+	 * Output a type="module" script tag.
+	 *
+	 * @param string $src Module URL.
+	 * @return void
+	 */
+	private function print_module_script( string $src ): void {
+		printf(
+			'<script type="module" src="%s"></script>' . "\n",
+			esc_url( $src )
 		);
-		wp_script_add_data( self::SCRIPT_HANDLE, 'type', 'module' );
-		wp_enqueue_script( self::SCRIPT_HANDLE );
 	}
 
 	/**
@@ -144,25 +146,21 @@ final class Script_Loader {
 	 * @param string $src Module URL.
 	 * @return void
 	 */
-	private function enqueue_borlabs_deferred_loader( string $src ): void {
-		wp_register_script(
-			self::BORLABS_LOADER_HANDLE,
-			WE_MAVE_VIDEO_URL . 'assets/frontend/borlabs-unblock.js',
-			array(),
-			WE_MAVE_VIDEO_VERSION,
-			true
+	private function print_borlabs_deferred_loader( string $src ): void {
+		$config = array(
+			'src'       => $src,
+			'blockerId' => Borlabs_Cookie::get_content_blocker_id(),
 		);
 
-		wp_localize_script(
-			self::BORLABS_LOADER_HANDLE,
-			'weMaveVideoBorlabs',
-			array(
-				'src'       => $src,
-				'blockerId' => Borlabs_Cookie::get_content_blocker_id(),
-			)
+		printf(
+			'<script>window.weMaveVideoBorlabs = %s;</script>' . "\n",
+			wp_json_encode( $config )
 		);
 
-		wp_enqueue_script( self::BORLABS_LOADER_HANDLE );
+		printf(
+			'<script src="%s"></script>' . "\n",
+			esc_url( $this->plugin_asset_url( 'assets/frontend/borlabs-unblock.js' ) )
+		);
 	}
 
 	/**
@@ -171,25 +169,35 @@ final class Script_Loader {
 	 * @param string $src Module URL.
 	 * @return void
 	 */
-	private function enqueue_rcb_deferred_loader( string $src ): void {
-		wp_register_script(
-			self::RCB_LOADER_HANDLE,
-			WE_MAVE_VIDEO_URL . 'assets/frontend/rcb-consent.js',
-			array(),
+	private function print_rcb_deferred_loader( string $src ): void {
+		$config = array(
+			'src'       => $src,
+			'serviceId' => Real_Cookie_Banner::get_service_id(),
+		);
+
+		printf(
+			'<script>window.weMaveVideoRcb = %s;</script>' . "\n",
+			wp_json_encode( $config )
+		);
+
+		printf(
+			'<script src="%s"></script>' . "\n",
+			esc_url( $this->plugin_asset_url( 'assets/frontend/rcb-consent.js' ) )
+		);
+	}
+
+	/**
+	 * Build a versioned URL to a plugin asset.
+	 *
+	 * @param string $relative_path Path relative to the plugin root.
+	 * @return string
+	 */
+	private function plugin_asset_url( string $relative_path ): string {
+		return add_query_arg(
+			'ver',
 			WE_MAVE_VIDEO_VERSION,
-			true
+			WE_MAVE_VIDEO_URL . ltrim( $relative_path, '/' )
 		);
-
-		wp_localize_script(
-			self::RCB_LOADER_HANDLE,
-			'weMaveVideoRcb',
-			array(
-				'src'       => $src,
-				'serviceId' => Real_Cookie_Banner::get_service_id(),
-			)
-		);
-
-		wp_enqueue_script( self::RCB_LOADER_HANDLE );
 	}
 
 	/**
@@ -199,6 +207,7 @@ final class Script_Loader {
 	 */
 	private function should_load_globally(): bool {
 		$settings = Options::get_settings();
+
 		return ! empty( $settings['load_globally'] );
 	}
 }

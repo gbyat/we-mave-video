@@ -327,8 +327,6 @@ final class Settings_Page {
 				<?php esc_html_e( 'Setup guides for embedding and consent tools are available in the Help tab (top right).', 'we-mave-video' ); ?>
 			</p>
 
-			<?php settings_errors( 'we_mave_video' ); ?>
-
 			<div class="notice notice-info inline">
 				<p>
 					<?php

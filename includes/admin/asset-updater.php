@@ -261,18 +261,35 @@ final class Asset_Updater {
 	 */
 	public function get_entry_url(): string {
 		$asset = Options::get_asset();
-		$path  = (string) ( $asset['path'] ?? '' );
+		$entry = (string) ( $asset['entry'] ?? self::ENTRY_RELATIVE );
+		$version = (string) ( $asset['version'] ?? '' );
+
+		if ( '' !== $version ) {
+			$entry_file = $this->resolve_entry_file(
+				Vendor_Storage::get_version_path( $version ),
+				$entry
+			);
+
+			if ( '' !== $entry_file ) {
+				$url = Vendor_Storage::get_entry_public_url( $version, $entry_file );
+				if ( '' !== $url ) {
+					return $url;
+				}
+			}
+		}
+
+		$path = (string) ( $asset['path'] ?? '' );
 
 		if ( '' === $path ) {
 			return '';
 		}
 
-		$entry = $this->resolve_entry_file( $path, (string) ( $asset['entry'] ?? self::ENTRY_RELATIVE ) );
-		if ( '' === $entry ) {
+		$entry_file = $this->resolve_entry_file( $path, $entry );
+		if ( '' === $entry_file ) {
 			return '';
 		}
 
-		return Vendor_Storage::path_to_public_url( trailingslashit( $path ) . $entry );
+		return Vendor_Storage::path_to_public_url( trailingslashit( $path ) . $entry_file );
 	}
 
 	/**
