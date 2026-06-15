@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Webentwicklerin\WeMaveVideo\Frontend;
 
 use Webentwicklerin\WeMaveVideo\Integrations\Borlabs_Cookie;
+use Webentwicklerin\WeMaveVideo\Integrations\Real_Cookie_Banner;
 use Webentwicklerin\WeMaveVideo\Player_Attributes;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -57,6 +58,18 @@ final class Player_Renderer {
 			Script_Loader::mark_borlabs_deferred();
 
 			return Borlabs_Cookie::block_player_html( $html );
+		}
+
+		if ( Real_Cookie_Banner::is_enabled() ) {
+			if ( Real_Cookie_Banner::has_consent() ) {
+				Script_Loader::mark_required();
+
+				return $html;
+			}
+
+			Script_Loader::mark_rcb_deferred();
+
+			return Real_Cookie_Banner::render_placeholder( $html );
 		}
 
 		Script_Loader::mark_required();

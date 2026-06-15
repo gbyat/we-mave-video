@@ -124,6 +124,72 @@ const translations = {
 	'Content blocker ID': 'Content-Blocker-ID',
 	'Create a content blocker in Borlabs Cookie with this ID (default: %1$s). Assign it to the <strong>External Media</strong> service group. Privacy policy: <a href="%2$s" target="_blank" rel="noopener noreferrer">mave.io privacy</a>. Suggested hostnames: %3$s.':
 		'In Borlabs Cookie einen Content Blocker mit dieser ID anlegen (Standard: %1$s). Der Service-Gruppe <strong>Externe Medien</strong> zuordnen. Datenschutzerklärung: <a href="%2$s" target="_blank" rel="noopener noreferrer">mave.io Datenschutz</a>. Vorgeschlagene Hostnames: %3$s.',
+	'Real Cookie Banner': 'Real Cookie Banner',
+	'Defer mave player embeds until external media is allowed. mave.io does not use tracking cookies; assign the service to your external media group.':
+		'mave-Player-Embeds verzögern, bis externe Medien erlaubt sind. mave.io verwendet keine Tracking-Cookies; den Service der Gruppe für externe Medien zuordnen.',
+	'Borlabs Cookie is active and takes precedence when its content blocker integration is enabled.':
+		'Borlabs Cookie ist aktiv und hat Vorrang, wenn die Content-Blocker-Integration aktiviert ist.',
+	'Consent integration': 'Einwilligungs-Integration',
+	'Wait for Real Cookie Banner consent before loading the player.':
+		'Vor dem Laden des Players auf die Einwilligung in Real Cookie Banner warten.',
+	'The Real Cookie Banner API is not available on this request. Save settings after Real Cookie Banner has finished loading.':
+		'Die Real-Cookie-Banner-API ist in dieser Anfrage nicht verfügbar. Einstellungen speichern, nachdem Real Cookie Banner vollständig geladen ist.',
+	'Service unique identifier': 'Eindeutige Service-Kennung',
+	'Create a service in Real Cookie Banner with this unique identifier (default: %1$s). Use the <strong>External media</strong> group. Privacy policy: <a href="%2$s" target="_blank" rel="noopener noreferrer">mave.io privacy</a>. Optional content blocker hostnames: %3$s.':
+		'In Real Cookie Banner einen Service mit dieser eindeutigen Kennung anlegen (Standard: %1$s). Der Gruppe <strong>Externe Medien</strong> zuordnen. Datenschutzerklärung: <a href="%2$s" target="_blank" rel="noopener noreferrer">mave.io Datenschutz</a>. Optionale Content-Blocker-Hostnames: %3$s.',
+	'External video content from mave.io is blocked until you allow external media. mave.io does not use tracking cookies.':
+		'Externer Videoinhalt von mave.io ist blockiert, bis externe Medien erlaubt sind. mave.io verwendet keine Tracking-Cookies.',
+	'mave.io privacy policy': 'mave.io Datenschutzerklärung',
+	'Load video': 'Video laden',
+	'Setup guides for embedding and consent tools are available in the Help tab (top right).':
+		'Einrichtungsanleitungen für Embeds und Consent-Tools findest du im Hilfe-Tab (oben rechts).',
+	'Embedding videos': 'Videos einbinden',
+	'This plugin self-hosts the mave.io player script on your server by default. Videos are embedded with a shortcode, the block editor block, or raw HTML markup.':
+		'Dieses Plugin hostet das mave.io-Player-Skript standardmäßig auf deinem Server. Videos werden per Shortcode, Block oder HTML-Markup eingebunden.',
+	'Shortcode (recommended for Enfold)': 'Shortcode (empfohlen für Enfold)',
+	'Use the snippet generator at the bottom of this settings page to copy ready-made examples.':
+		'Nutze den Snippet-Generator unten auf dieser Seite, um fertige Beispiele zu kopieren.',
+	'mave.io does not use tracking cookies. Use a content blocker only and assign it to the external media service group.':
+		'mave.io verwendet keine Tracking-Cookies. Nur einen Content Blocker verwenden und der Service-Gruppe für externe Medien zuordnen.',
+	'In Borlabs Cookie, open Content Blocker and click Add New.':
+		'In Borlabs Cookie Content Blocker öffnen und Neu hinzufügen.',
+	'Set the ID to %s (or match the ID configured on this settings page).':
+		'ID auf %s setzen (oder an die ID auf dieser Einstellungsseite anpassen).',
+	'Assign the blocker to the External Media service group.':
+		'Den Blocker der Service-Gruppe Externe Medien zuordnen.',
+	'Set the privacy policy URL to %s.': 'Datenschutz-URL auf %s setzen.',
+	'Add these hostnames if prompted: %s.': 'Diese Hostnames bei Bedarf ergänzen: %s.',
+	'Activate the content blocker in Borlabs Cookie.': 'Den Content Blocker in Borlabs Cookie aktivieren.',
+	'On this settings page, enable “Wrap player embeds with the Borlabs content blocker”.':
+		'Auf dieser Seite „Player-Embeds mit dem Borlabs Content Blocker umschließen“ aktivieren.',
+	'No script blocker is required for the self-hosted player file. If you enable “Load from official CDN” for debugging, keep the hostnames above so Borlabs can block the external script until consent.':
+		'Für die selbst gehostete Player-Datei ist kein Script Blocker nötig. Bei „Vom offiziellen CDN laden“ (Debug) die Hostnames oben beibehalten, damit Borlabs das externe Skript bis zur Einwilligung blockiert.',
+	'Borlabs Cookie is not active on this site. Install and activate it before using this integration.':
+		'Borlabs Cookie ist auf dieser Website nicht aktiv. Vor der Integration installieren und aktivieren.',
+	'mave.io does not use tracking cookies. Create a service for external media and let this plugin wait for consent before loading the player.':
+		'mave.io verwendet keine Tracking-Cookies. Einen Service für externe Medien anlegen; dieses Plugin wartet mit dem Player-Laden auf die Einwilligung.',
+	'In Real Cookie Banner, open Cookies and add a new service (or create from scratch).':
+		'In Real Cookie Banner Cookies öffnen und einen neuen Service anlegen (oder von Grund auf erstellen).',
+	'Set the unique identifier to %s (or match the identifier on this settings page).':
+		'Eindeutige Kennung auf %s setzen (oder an die Kennung auf dieser Einstellungsseite anpassen).',
+	'Assign the service to the External media group.':
+		'Den Service der Gruppe Externe Medien zuordnen.',
+	'Optional: add a content blocker for the player markup or hostnames if you want Real Cookie Banner to manage the placeholder UI as well.':
+		'Optional: Content Blocker für Player-Markup oder Hostnames, wenn Real Cookie Banner auch die Platzhalter-UI steuern soll.',
+	'Suggested hostnames for a content blocker: %s.':
+		'Vorgeschlagene Hostnames für einen Content Blocker: %s.',
+	'On this settings page, enable “Wait for Real Cookie Banner consent before loading the player”.':
+		'Auf dieser Seite „Vor dem Laden des Players auf die Einwilligung in Real Cookie Banner warten“ aktivieren.',
+	'This integration also works when you load the player script from the official mave CDN (debug setting). The script is deferred until consent in both cases.':
+		'Die Integration funktioniert auch mit dem offiziellen mave-CDN (Debug-Einstellung). Das Skript wird in beiden Fällen bis zur Einwilligung verzögert.',
+	'If Borlabs Cookie is active and its content blocker integration is enabled, Borlabs takes precedence and Real Cookie Banner integration is skipped.':
+		'Ist Borlabs Cookie aktiv und die Content-Blocker-Integration eingeschaltet, hat Borlabs Vorrang; die Real-Cookie-Banner-Integration entfällt.',
+	'Real Cookie Banner is not active on this site. Install and activate it before using this integration.':
+		'Real Cookie Banner ist auf dieser Website nicht aktiv. Vor der Integration installieren und aktivieren.',
+	'More information': 'Weitere Informationen',
+	'mave.io player documentation': 'mave.io Player-Dokumentation',
+	'mave.io privacy policy': 'mave.io Datenschutzerklärung',
+	'Plugin on GitHub': 'Plugin auf GitHub',
 };
 
 if (!fs.existsSync(potFile)) {

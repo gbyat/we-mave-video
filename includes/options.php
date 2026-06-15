@@ -35,6 +35,8 @@ final class Options {
 			'github_updates_enabled' => 'yes',
 			'borlabs_content_blocker_enabled' => true,
 			'borlabs_content_blocker_id'      => 'we-mave-video',
+			'rcb_consent_enabled'             => true,
+			'rcb_service_id'                  => 'we-mave-video',
 			'player_defaults' => array(
 				'aspect_ratio' => '16/9',
 				'autoplay'     => 'false',

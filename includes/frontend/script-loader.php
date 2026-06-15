@@ -11,6 +11,7 @@ namespace Webentwicklerin\WeMaveVideo\Frontend;
 
 use Webentwicklerin\WeMaveVideo\Admin\Asset_Updater;
 use Webentwicklerin\WeMaveVideo\Integrations\Borlabs_Cookie;
+use Webentwicklerin\WeMaveVideo\Integrations\Real_Cookie_Banner;
 use Webentwicklerin\WeMaveVideo\Options;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -26,9 +27,13 @@ final class Script_Loader {
 
 	public const BORLABS_LOADER_HANDLE = 'we-mave-video-borlabs';
 
+	public const RCB_LOADER_HANDLE = 'we-mave-video-rcb';
+
 	private static bool $required = false;
 
 	private static bool $borlabs_deferred = false;
+
+	private static bool $rcb_deferred = false;
 
 	private static bool $enqueued = false;
 
@@ -62,6 +67,34 @@ final class Script_Loader {
 	}
 
 	/**
+	 * Defer module loading until Real Cookie Banner consent is given.
+	 *
+	 * @return void
+	 */
+	public static function mark_rcb_deferred(): void {
+		self::$rcb_deferred = true;
+		self::$required     = true;
+	}
+
+	/**
+	 * Mark script loading based on active consent integrations.
+	 *
+	 * @return void
+	 */
+	public static function mark_for_consent(): void {
+		self::$required = true;
+
+		if ( Borlabs_Cookie::is_enabled() ) {
+			self::$borlabs_deferred = true;
+			return;
+		}
+
+		if ( Real_Cookie_Banner::is_enabled() && ! Real_Cookie_Banner::has_consent() ) {
+			self::$rcb_deferred = true;
+		}
+	}
+
+	/**
 	 * Register and enqueue the player module in the footer.
 	 *
 	 * @return void
@@ -86,6 +119,11 @@ final class Script_Loader {
 
 		if ( Borlabs_Cookie::is_enabled() && self::$borlabs_deferred ) {
 			$this->enqueue_borlabs_deferred_loader( $src );
+			return;
+		}
+
+		if ( Real_Cookie_Banner::is_enabled() && self::$rcb_deferred ) {
+			$this->enqueue_rcb_deferred_loader( $src );
 			return;
 		}
 
@@ -125,6 +163,33 @@ final class Script_Loader {
 		);
 
 		wp_enqueue_script( self::BORLABS_LOADER_HANDLE );
+	}
+
+	/**
+	 * Load the module only after Real Cookie Banner consent is given.
+	 *
+	 * @param string $src Module URL.
+	 * @return void
+	 */
+	private function enqueue_rcb_deferred_loader( string $src ): void {
+		wp_register_script(
+			self::RCB_LOADER_HANDLE,
+			WE_MAVE_VIDEO_URL . 'assets/frontend/rcb-consent.js',
+			array(),
+			WE_MAVE_VIDEO_VERSION,
+			true
+		);
+
+		wp_localize_script(
+			self::RCB_LOADER_HANDLE,
+			'weMaveVideoRcb',
+			array(
+				'src'       => $src,
+				'serviceId' => Real_Cookie_Banner::get_service_id(),
+			)
+		);
+
+		wp_enqueue_script( self::RCB_LOADER_HANDLE );
 	}
 
 	/**

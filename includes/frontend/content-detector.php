@@ -9,8 +9,6 @@ declare(strict_types=1);
 
 namespace Webentwicklerin\WeMaveVideo\Frontend;
 
-use Webentwicklerin\WeMaveVideo\Integrations\Borlabs_Cookie;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -60,12 +58,7 @@ final class Content_Detector {
 	 * @return void
 	 */
 	private function mark_script_needed(): void {
-		if ( Borlabs_Cookie::is_enabled() ) {
-			Script_Loader::mark_borlabs_deferred();
-			return;
-		}
-
-		Script_Loader::mark_required();
+		Script_Loader::mark_for_consent();
 	}
 
 	/**

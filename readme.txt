@@ -22,7 +22,7 @@ Features:
 * Copyable snippets for Enfold and other page builders
 * Optional Gutenberg block
 * Global player defaults with per-embed overrides
-* Optional Borlabs Cookie content blocker integration (external media)
+* Optional Borlabs Cookie and Real Cookie Banner integrations (external media)
 
 The bundled mave components are licensed under AGPL-3.0-or-later.
 
@@ -46,6 +46,10 @@ From the official npm registry package `@maveio/components`.
 = How do I use Borlabs Cookie with mave videos? =
 
 Install Borlabs Cookie, create a content blocker with ID `we-mave-video`, assign it to the External Media service group, and set the privacy policy URL to https://www.mave.io/privacy/. Enable the integration under Settings → WE Mave Video. mave.io does not use tracking cookies; only the embed is blocked until consent.
+
+= How do I use Real Cookie Banner with mave videos? =
+
+Create a service in Real Cookie Banner with unique identifier `we-mave-video`, assign it to External media, and set the privacy policy URL to https://www.mave.io/privacy/. Enable the integration under Settings → WE Mave Video. The player script loads only after consent via `consentApi`. This also works when loading the player from the mave CDN.
 
 == Changelog ==
 

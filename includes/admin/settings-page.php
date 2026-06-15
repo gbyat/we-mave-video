@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Webentwicklerin\WeMaveVideo\Admin;
 
 use Webentwicklerin\WeMaveVideo\Integrations\Borlabs_Cookie;
+use Webentwicklerin\WeMaveVideo\Integrations\Real_Cookie_Banner;
 use Webentwicklerin\WeMaveVideo\Options;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -21,7 +22,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 final class Settings_Page {
 
-	private const PAGE_SLUG     = 'we-mave-video';
+	public const PAGE_SLUG_PUBLIC = 'we-mave-video';
+
+	private const PAGE_SLUG     = self::PAGE_SLUG_PUBLIC;
 	private const ACTION_CHECK  = 'we_mave_video_check_update';
 	private const ACTION_UPDATE = 'we_mave_video_run_update';
 
@@ -35,6 +38,8 @@ final class Settings_Page {
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 		add_action( 'admin_init', array( $this, 'handle_actions' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
+
+		( new Settings_Help() )->register();
 	}
 
 	/**
@@ -98,6 +103,11 @@ final class Settings_Page {
 
 		$blocker_id = sanitize_key( (string) ( $input['borlabs_content_blocker_id'] ?? $defaults['borlabs_content_blocker_id'] ) );
 		$output['borlabs_content_blocker_id'] = '' !== $blocker_id ? $blocker_id : Borlabs_Cookie::CONTENT_BLOCKER_ID;
+
+		$output['rcb_consent_enabled'] = ! empty( $input['rcb_consent_enabled'] );
+
+		$service_id = sanitize_key( (string) ( $input['rcb_service_id'] ?? $defaults['rcb_service_id'] ) );
+		$output['rcb_service_id'] = '' !== $service_id ? $service_id : Real_Cookie_Banner::SERVICE_ID;
 
 		$player_input = $input['player_defaults'] ?? array();
 		if ( ! is_array( $player_input ) ) {
@@ -313,6 +323,9 @@ final class Settings_Page {
 		?>
 		<div class="wrap">
 			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
+			<p class="description">
+				<?php esc_html_e( 'Setup guides for embedding and consent tools are available in the Help tab (top right).', 'we-mave-video' ); ?>
+			</p>
 
 			<?php settings_errors( 'we_mave_video' ); ?>
 
@@ -579,6 +592,54 @@ final class Settings_Page {
 										esc_html( Borlabs_Cookie::CONTENT_BLOCKER_ID ),
 										esc_url( Borlabs_Cookie::PRIVACY_URL ),
 										esc_html( implode( ', ', Borlabs_Cookie::suggested_hostnames() ) )
+									)
+								);
+								?>
+							</p>
+						</td>
+					</tr>
+				</table>
+				<?php endif; ?>
+
+				<?php if ( Real_Cookie_Banner::is_plugin_active() ) : ?>
+				<h2><?php esc_html_e( 'Real Cookie Banner', 'we-mave-video' ); ?></h2>
+				<p class="description">
+					<?php esc_html_e( 'Defer mave player embeds until external media is allowed. mave.io does not use tracking cookies; assign the service to your external media group.', 'we-mave-video' ); ?>
+				</p>
+				<?php if ( Borlabs_Cookie::is_plugin_active() && Borlabs_Cookie::is_api_available() && ! empty( $settings['borlabs_content_blocker_enabled'] ) ) : ?>
+					<p class="description">
+						<?php esc_html_e( 'Borlabs Cookie is active and takes precedence when its content blocker integration is enabled.', 'we-mave-video' ); ?>
+					</p>
+				<?php endif; ?>
+				<table class="form-table" role="presentation">
+					<tr>
+						<th scope="row"><?php esc_html_e( 'Consent integration', 'we-mave-video' ); ?></th>
+						<td>
+							<label>
+								<input type="checkbox" name="<?php echo esc_attr( Options::OPTION_SETTINGS ); ?>[rcb_consent_enabled]" value="1" <?php checked( ! empty( $settings['rcb_consent_enabled'] ) ); ?> <?php disabled( ! Real_Cookie_Banner::is_api_available() ); ?> />
+								<?php esc_html_e( 'Wait for Real Cookie Banner consent before loading the player.', 'we-mave-video' ); ?>
+							</label>
+							<?php if ( ! Real_Cookie_Banner::is_api_available() ) : ?>
+								<p class="description"><?php esc_html_e( 'The Real Cookie Banner API is not available on this request. Save settings after Real Cookie Banner has finished loading.', 'we-mave-video' ); ?></p>
+							<?php endif; ?>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="we-mave-rcb-service-id"><?php esc_html_e( 'Service unique identifier', 'we-mave-video' ); ?></label></th>
+						<td>
+							<input id="we-mave-rcb-service-id" type="text" class="regular-text code" name="<?php echo esc_attr( Options::OPTION_SETTINGS ); ?>[rcb_service_id]" value="<?php echo esc_attr( (string) ( $settings['rcb_service_id'] ?? Real_Cookie_Banner::SERVICE_ID ) ); ?>" />
+							<p class="description">
+								<?php
+								echo wp_kses_post(
+									sprintf(
+										/* translators: 1: default service ID, 2: privacy policy URL, 3: comma-separated hostnames */
+										__(
+											'Create a service in Real Cookie Banner with this unique identifier (default: %1$s). Use the <strong>External media</strong> group. Privacy policy: <a href="%2$s" target="_blank" rel="noopener noreferrer">mave.io privacy</a>. Optional content blocker hostnames: %3$s.',
+											'we-mave-video'
+										),
+										esc_html( Real_Cookie_Banner::SERVICE_ID ),
+										esc_url( Real_Cookie_Banner::PRIVACY_URL ),
+										esc_html( implode( ', ', Real_Cookie_Banner::suggested_hostnames() ) )
 									)
 								);
 								?>
