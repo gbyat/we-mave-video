@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Plugin Name:       we Mave Video
+ * Plugin Name:       WE Mave Video
  * Plugin URI:        https://github.com/gbyat/we-mave-video
  * Description:       Self-hosted mave.io video player with shortcode, snippet generator, and optional block.
  * Version: 1.0.2
@@ -17,25 +18,25 @@
  * @package Webentwicklerin\WeMaveVideo
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
-define( 'WE_MAVE_VIDEO_VERSION', '1.0.2' );
-define( 'WE_MAVE_VIDEO_FILE', __FILE__ );
-define( 'WE_MAVE_VIDEO_PATH', plugin_dir_path( __FILE__ ) );
-define( 'WE_MAVE_VIDEO_URL', plugin_dir_url( __FILE__ ) );
-define( 'WE_MAVE_VIDEO_GITHUB_REPO', 'gbyat/we-mave-video' );
+define('WE_MAVE_VIDEO_VERSION', '1.0.2');
+define('WE_MAVE_VIDEO_FILE', __FILE__);
+define('WE_MAVE_VIDEO_PATH', plugin_dir_path(__FILE__));
+define('WE_MAVE_VIDEO_URL', plugin_dir_url(__FILE__));
+define('WE_MAVE_VIDEO_GITHUB_REPO', 'gbyat/we-mave-video');
 
 $autoload = WE_MAVE_VIDEO_PATH . 'vendor/autoload.php';
-if ( file_exists( $autoload ) ) {
+if (file_exists($autoload)) {
 	require_once $autoload;
 } else {
 	require_once WE_MAVE_VIDEO_PATH . 'includes/autoload.php';
 }
 
-register_activation_hook( __FILE__, array( \Webentwicklerin\WeMaveVideo\Plugin::class, 'activate' ) );
-register_deactivation_hook( __FILE__, array( \Webentwicklerin\WeMaveVideo\Plugin::class, 'deactivate' ) );
+register_activation_hook(__FILE__, array(\Webentwicklerin\WeMaveVideo\Plugin::class, 'activate'));
+register_deactivation_hook(__FILE__, array(\Webentwicklerin\WeMaveVideo\Plugin::class, 'deactivate'));
 
 add_action(
 	'plugins_loaded',
