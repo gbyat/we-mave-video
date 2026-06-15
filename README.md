@@ -2,7 +2,7 @@
 
 Self-hosted [mave.io](https://www.mave.io/docs/player/) video player for WordPress.
 
-**Stable tag:** 1.1.1
+**Stable tag:** 1.1.2
 
 ## Features
 
