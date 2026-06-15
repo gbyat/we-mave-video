@@ -43,8 +43,8 @@ final class Settings_Page {
 	 */
 	public function add_menu_page(): void {
 		add_options_page(
-			__( 'we Mave Video', 'we-mave-video' ),
-			__( 'we Mave Video', 'we-mave-video' ),
+			__( 'WE Mave Video', 'we-mave-video' ),
+			__( 'WE Mave Video', 'we-mave-video' ),
 			'manage_options',
 			self::PAGE_SLUG,
 			array( $this, 'render_page' )

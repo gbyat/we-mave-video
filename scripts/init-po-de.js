@@ -11,7 +11,7 @@ const potFile = path.join(languagesDir, 'we-mave-video.pot');
 const poFile = path.join(languagesDir, 'we-mave-video-de_DE.po');
 
 const translations = {
-	'we Mave Video': 'we Mave Video',
+	'WE Mave Video': 'WE Mave Video',
 	'Self-hosted mave.io video player with shortcode, snippet generator, and optional block.':
 		'Selbst gehosteter mave.io-Videoplayer mit Shortcode, Snippet-Generator und optionalem Block.',
 	'npm registry returned HTTP %d.': 'Die npm-Registry antwortete mit HTTP %d.',
@@ -25,8 +25,8 @@ const translations = {
 	'Could not create directory %s.': 'Verzeichnis %s konnte nicht erstellt werden.',
 	'Could not write file %s.': 'Datei %s konnte nicht geschrieben werden.',
 	'Could not download the player bundle (HTTP %d).': 'Das Player-Bundle konnte nicht heruntergeladen werden (HTTP %d).',
-	'Once weekly (we Mave Video)': 'Einmal wöchentlich (we Mave Video)',
-	'Once monthly (we Mave Video)': 'Einmal monatlich (we Mave Video)',
+	'Once weekly (WE Mave Video)': 'Einmal wöchentlich (WE Mave Video)',
+	'Once monthly (WE Mave Video)': 'Einmal monatlich (WE Mave Video)',
 	'Update available: %1$s (installed: %2$s).': 'Update verfügbar: %1$s (installiert: %2$s).',
 	none: 'keine',
 	'Components are up to date (%s).': 'Die Komponenten sind auf dem neuesten Stand (%s).',

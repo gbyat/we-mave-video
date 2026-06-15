@@ -1,4 +1,4 @@
-# we Mave Video
+# WE Mave Video
 
 Self-hosted [mave.io](https://www.mave.io/docs/player/) video player for WordPress.
 

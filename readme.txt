@@ -1,4 +1,4 @@
-=== we Mave Video ===
+=== WE Mave Video ===
 Contributors: webentwicklerin
 Tags: video, mave, embed, shortcode, player
 Requires at least: 6.5
@@ -12,7 +12,7 @@ Self-host the mave.io player components and embed videos via shortcode, HTML sni
 
 == Description ==
 
-we Mave Video lets you embed mave.io hosted videos without loading the player script from an external CDN.
+WE Mave Video lets you embed mave.io hosted videos without loading the player script from an external CDN.
 
 Features:
 
@@ -29,7 +29,7 @@ The bundled mave components are licensed under AGPL-3.0-or-later.
 
 1. Upload the plugin files to `/wp-content/plugins/we-mave-video/`.
 2. Activate the plugin through the Plugins screen.
-3. Go to Settings → we Mave Video to verify the components were downloaded.
+3. Go to Settings → WE Mave Video to verify the components were downloaded.
 4. Add `[we_mave_player embed="YOUR_EMBED_ID"]` to a page or use the block.
 
 == Frequently Asked Questions ==

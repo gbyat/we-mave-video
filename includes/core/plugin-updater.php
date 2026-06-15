@@ -221,7 +221,7 @@ final class Plugin_Updater {
 		$download_link = $this->resolve_release_asset_url();
 
 		return (object) array(
-			'name'              => (string) ( $this->plugin['Name'] ?? 'we Mave Video' ),
+			'name'              => (string) ( $this->plugin['Name'] ?? 'WE Mave Video' ),
 			'slug'              => dirname( $this->basename ),
 			'version'           => ltrim( $version, 'v' ),
 			'author'            => (string) ( $this->plugin['AuthorName'] ?? '' ),
@@ -390,7 +390,7 @@ final class Plugin_Updater {
 		if ( ! is_string( $content ) || '' === $content ) {
 			return false;
 		}
-		if ( ! preg_match( '/Plugin Name:\s*we Mave Video/mi', $content ) ) {
+		if ( ! preg_match( '/Plugin Name:\s*WE Mave Video/mi', $content ) ) {
 			return false;
 		}
 

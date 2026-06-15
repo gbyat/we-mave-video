@@ -42,12 +42,12 @@ final class Cron_Scheduler {
 	public function add_schedules( array $schedules ): array {
 		$schedules['we_mave_video_weekly'] = array(
 			'interval' => WEEK_IN_SECONDS,
-			'display'  => __( 'Once weekly (we Mave Video)', 'we-mave-video' ),
+			'display'  => __( 'Once weekly (WE Mave Video)', 'we-mave-video' ),
 		);
 
 		$schedules['we_mave_video_monthly'] = array(
 			'interval' => 30 * DAY_IN_SECONDS,
-			'display'  => __( 'Once monthly (we Mave Video)', 'we-mave-video' ),
+			'display'  => __( 'Once monthly (WE Mave Video)', 'we-mave-video' ),
 		);
 
 		return $schedules;

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <ruleset name="we-mave-video">
-	<description>PHPCS ruleset for we Mave Video.</description>
+	<description>PHPCS ruleset for WE Mave Video.</description>
 
 	<file>we-mave-video.php</file>
 	<file>uninstall.php</file>
