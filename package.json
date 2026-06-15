@@ -1,0 +1,34 @@
+{
+	"name": "we-mave-video",
+	"version": "1.0.0",
+	"description": "WordPress plugin for self-hosted mave.io video player embeds.",
+	"scripts": {
+		"wp-cli:install": "node scripts/install-wp-cli.js",
+		"pot": "node scripts/update-pot.js",
+		"make-pot": "npm run pot",
+		"mo": "node scripts/make-mo.js",
+		"i18n:mo": "npm run mo",
+		"i18n:json": "node scripts/make-json.js",
+		"json": "npm run i18n:json",
+		"po:de": "node scripts/init-po-de.js",
+		"i18n": "npm run pot && npm run po:de && npm run mo && npm run json",
+		"sync:version": "node scripts/sync-version.js",
+		"release:patch": "node scripts/release.js patch",
+		"release:minor": "node scripts/release.js minor",
+		"release:major": "node scripts/release.js major"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/gbyat/we-mave-video.git"
+	},
+	"keywords": [
+		"wordpress",
+		"plugin",
+		"mave",
+		"video",
+		"i18n"
+	],
+	"author": "webentwicklerin, Gabriele Laesser",
+	"license": "GPL-2.0-or-later",
+	"type": "commonjs"
+}

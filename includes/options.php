@@ -30,8 +30,9 @@ final class Options {
 		return array(
 			'update_schedule' => 'weekly',
 			'auto_update'     => true,
-			'load_globally'   => false,
-			'load_from_cdn'   => false,
+			'load_globally'          => false,
+			'load_from_cdn'          => false,
+			'github_updates_enabled' => 'no',
 			'player_defaults' => array(
 				'aspect_ratio' => '16/9',
 				'autoplay'     => 'false',

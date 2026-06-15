@@ -88,6 +88,11 @@ final class Settings_Page {
 		$output['load_globally'] = ! empty( $input['load_globally'] );
 		$output['load_from_cdn'] = ! empty( $input['load_from_cdn'] );
 
+		$github_updates = sanitize_key( (string) ( $input['github_updates_enabled'] ?? $defaults['github_updates_enabled'] ) );
+		if ( in_array( $github_updates, array( 'yes', 'no' ), true ) ) {
+			$output['github_updates_enabled'] = $github_updates;
+		}
+
 		$player_input = $input['player_defaults'] ?? array();
 		if ( ! is_array( $player_input ) ) {
 			$player_input = array();
@@ -388,6 +393,33 @@ final class Settings_Page {
 
 			<form method="post" action="options.php">
 				<?php settings_fields( 'we_mave_video' ); ?>
+
+				<h2><?php esc_html_e( 'Plugin updates', 'we-mave-video' ); ?></h2>
+				<table class="form-table" role="presentation">
+					<tr>
+						<th scope="row"><label for="we-mave-github-updates"><?php esc_html_e( 'GitHub auto updates', 'we-mave-video' ); ?></label></th>
+						<td>
+							<select id="we-mave-github-updates" name="<?php echo esc_attr( Options::OPTION_SETTINGS ); ?>[github_updates_enabled]">
+								<option value="no" <?php selected( $settings['github_updates_enabled'], 'no' ); ?>><?php esc_html_e( 'Disabled', 'we-mave-video' ); ?></option>
+								<option value="yes" <?php selected( $settings['github_updates_enabled'], 'yes' ); ?>><?php esc_html_e( 'Enabled', 'we-mave-video' ); ?></option>
+							</select>
+							<p class="description">
+								<?php
+								echo wp_kses_post(
+									sprintf(
+										/* translators: %s: GitHub repository slug */
+										__(
+											'Check for plugin updates from <a href="https://github.com/%s/releases" target="_blank" rel="noopener noreferrer">GitHub releases</a>. This updates the WordPress plugin only, not the self-hosted mave components.',
+											'we-mave-video'
+										),
+										esc_html( WE_MAVE_VIDEO_GITHUB_REPO )
+									)
+								);
+								?>
+							</p>
+						</td>
+					</tr>
+				</table>
 
 				<h2><?php esc_html_e( 'Update schedule', 'we-mave-video' ); ?></h2>
 				<table class="form-table" role="presentation">

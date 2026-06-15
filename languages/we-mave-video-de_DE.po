@@ -1,0 +1,468 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: we Mave Video 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/we-mave-video\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: webentwicklerin, Gabriele Laesser\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-06-15T07:42:59+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: we-mave-video\n"
+
+#. Plugin Name of the plugin
+#: we-mave-video.php
+#: includes/admin/settings-page.php:46
+#: includes/admin/settings-page.php:47
+msgid "we Mave Video"
+msgstr "we Mave Video"
+
+#. Plugin URI of the plugin
+#: we-mave-video.php
+msgid "https://github.com/gbyat/we-mave-video"
+msgstr ""
+
+#. Description of the plugin
+#: we-mave-video.php
+msgid "Self-hosted mave.io video player with shortcode, snippet generator, and optional block."
+msgstr "Selbst gehosteter mave.io-Videoplayer mit Shortcode, Snippet-Generator und optionalem Block."
+
+#. Author of the plugin
+#: we-mave-video.php
+msgid "webentwicklerin, Gabriele Laesser"
+msgstr ""
+
+#. Author URI of the plugin
+#: we-mave-video.php
+msgid "https://webentwicklerin.at"
+msgstr ""
+
+#. translators: %d: HTTP status code
+#: includes/admin/asset-updater.php:62
+#, php-format
+msgid "npm registry returned HTTP %d."
+msgstr "Die npm-Registry antwortete mit HTTP %d."
+
+#: includes/admin/asset-updater.php:72
+msgid "npm registry response was invalid."
+msgstr "Die Antwort der npm-Registry war ungültig."
+
+#: includes/admin/asset-updater.php:133
+msgid "Could not create the local vendor directory."
+msgstr "Das lokale Vendor-Verzeichnis konnte nicht erstellt werden."
+
+#: includes/admin/asset-updater.php:150
+msgid "Could not write the player bundle file."
+msgstr "Die Player-Bundle-Datei konnte nicht geschrieben werden."
+
+#: includes/admin/asset-updater.php:158
+msgid "Downloaded player bundle appears incomplete or invalid."
+msgstr "Das heruntergeladene Player-Bundle scheint unvollständig oder ungültig zu sein."
+
+#. translators: 1: file path, 2: HTTP status code
+#: includes/admin/asset-updater.php:417
+#, php-format
+msgid "Could not download %1$s (HTTP %2$d)."
+msgstr "%1$s konnte nicht heruntergeladen werden (HTTP %2$d)."
+
+#. translators: %s: file path
+#: includes/admin/asset-updater.php:430
+#, php-format
+msgid "Downloaded file %s appears empty."
+msgstr "Die heruntergeladene Datei %s scheint leer zu sein."
+
+#. translators: %s: directory path
+#: includes/admin/asset-updater.php:442
+#, php-format
+msgid "Could not create directory %s."
+msgstr "Verzeichnis %s konnte nicht erstellt werden."
+
+#. translators: %s: file path
+#: includes/admin/asset-updater.php:454
+#, php-format
+msgid "Could not write file %s."
+msgstr "Datei %s konnte nicht geschrieben werden."
+
+#. translators: %d: HTTP status code
+#: includes/admin/asset-updater.php:487
+#, php-format
+msgid "Could not download the player bundle (HTTP %d)."
+msgstr "Das Player-Bundle konnte nicht heruntergeladen werden (HTTP %d)."
+
+#: includes/admin/cron-scheduler.php:45
+msgid "Once weekly (we Mave Video)"
+msgstr "Einmal wöchentlich (we Mave Video)"
+
+#: includes/admin/cron-scheduler.php:50
+msgid "Once monthly (we Mave Video)"
+msgstr "Einmal monatlich (we Mave Video)"
+
+#. translators: 1: remote version, 2: local version
+#: includes/admin/settings-page.php:216
+#, php-format
+msgid "Update available: %1$s (installed: %2$s)."
+msgstr "Update verfügbar: %1$s (installiert: %2$s)."
+
+#: includes/admin/settings-page.php:218
+msgid "none"
+msgstr "keine"
+
+#. translators: %s: installed version
+#: includes/admin/settings-page.php:230
+#, php-format
+msgid "Components are up to date (%s)."
+msgstr "Die Komponenten sind auf dem neuesten Stand (%s)."
+
+#. translators: %s: installed version
+#: includes/admin/settings-page.php:261
+#, php-format
+msgid "Components updated to version %s."
+msgstr "Komponenten auf Version %s aktualisiert."
+
+#. translators: %s: link to mave AGPL components
+#: includes/admin/settings-page.php:319
+#, php-format
+msgid "This plugin self-hosts <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">@maveio/components</a>, which is licensed under AGPL-3.0-or-later."
+msgstr "Dieses Plugin hostet <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">@maveio/components</a> selbst, lizenziert unter AGPL-3.0-or-later."
+
+#: includes/admin/settings-page.php:330
+msgid "Hosted components"
+msgstr "Gehostete Komponenten"
+
+#: includes/admin/settings-page.php:333
+msgid "Installed version"
+msgstr "Installierte Version"
+
+#: includes/admin/settings-page.php:334
+msgid "Not installed"
+msgstr "Nicht installiert"
+
+#: includes/admin/settings-page.php:337
+msgid "Status"
+msgstr "Status"
+
+#: includes/admin/settings-page.php:341
+msgid "Last check"
+msgstr "Letzte Prüfung"
+
+#: includes/admin/settings-page.php:345
+msgid "Last update"
+msgstr "Letztes Update"
+
+#: includes/admin/settings-page.php:349
+msgid "Local path"
+msgstr "Lokaler Pfad"
+
+#: includes/admin/settings-page.php:353
+msgid "Front-end script source"
+msgstr "Frontend-Skriptquelle"
+
+#: includes/admin/settings-page.php:357
+msgid "Official CDN (debug mode)"
+msgstr "Offizielles CDN (Debug-Modus)"
+
+#: includes/admin/settings-page.php:361
+msgid "Self-hosted"
+msgstr "Selbst gehostet"
+
+#: includes/admin/settings-page.php:374
+msgid "Last error"
+msgstr "Letzter Fehler"
+
+#: includes/admin/settings-page.php:383
+msgid "Check for updates"
+msgstr "Auf Updates prüfen"
+
+#: includes/admin/settings-page.php:389
+msgid "Update now"
+msgstr "Jetzt aktualisieren"
+
+#: includes/admin/settings-page.php:397
+msgid "Plugin updates"
+msgstr "Plugin-Updates"
+
+#: includes/admin/settings-page.php:400
+msgid "GitHub auto updates"
+msgstr "Automatische GitHub-Updates"
+
+#: includes/admin/settings-page.php:403
+msgid "Disabled"
+msgstr "Deaktiviert"
+
+#: includes/admin/settings-page.php:404
+msgid "Enabled"
+msgstr "Aktiviert"
+
+#. translators: %s: GitHub repository slug
+#: includes/admin/settings-page.php:411
+#, php-format
+msgid "Check for plugin updates from <a href=\"https://github.com/%s/releases\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub releases</a>. This updates the WordPress plugin only, not the self-hosted mave components."
+msgstr "Prüft Plugin-Updates über <a href=\"https://github.com/%s/releases\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub Releases</a>. Aktualisiert nur das WordPress-Plugin, nicht die selbst gehosteten mave-Komponenten."
+
+#: includes/admin/settings-page.php:424
+msgid "Update schedule"
+msgstr "Update-Zeitplan"
+
+#: includes/admin/settings-page.php:427
+msgid "Schedule"
+msgstr "Zeitplan"
+
+#: includes/admin/settings-page.php:430
+msgid "Daily"
+msgstr "Täglich"
+
+#: includes/admin/settings-page.php:431
+msgid "Weekly"
+msgstr "Wöchentlich"
+
+#: includes/admin/settings-page.php:432
+msgid "Monthly"
+msgstr "Monatlich"
+
+#: includes/admin/settings-page.php:433
+msgid "Manual only"
+msgstr "Nur manuell"
+
+#: includes/admin/settings-page.php:438
+msgid "Automatic updates"
+msgstr "Automatische Updates"
+
+#: includes/admin/settings-page.php:442
+msgid "Download and replace components automatically when a newer version is found."
+msgstr "Komponenten automatisch herunterladen und ersetzen, wenn eine neuere Version gefunden wird."
+
+#: includes/admin/settings-page.php:447
+msgid "Load script globally"
+msgstr "Skript global laden"
+
+#: includes/admin/settings-page.php:451
+msgid "Enqueue the player script on every front-end page (not recommended)."
+msgstr "Das Player-Skript auf jeder Frontend-Seite laden (nicht empfohlen)."
+
+#: includes/admin/settings-page.php:456
+msgid "Load from official CDN"
+msgstr "Vom offiziellen CDN laden"
+
+#: includes/admin/settings-page.php:460
+msgid "Load the player script from the official mave CDN instead of the self-hosted copy."
+msgstr "Das Player-Skript vom offiziellen mave-CDN statt aus der selbst gehosteten Kopie laden."
+
+#. translators: %s: official CDN script URL
+#: includes/admin/settings-page.php:467
+#, php-format
+msgid "Use this only for debugging: compare player behavior against the reference implementation documented at <a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">mave.io</a>. The script is loaded from <code>%2$s</code>. Disable again for production self-hosting."
+msgstr "Nur zum Debuggen verwenden: Player-Verhalten mit der Referenzimplementierung auf <a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">mave.io</a> vergleichen. Das Skript wird von <code>%2$s</code> geladen. Für produktives Self-Hosting wieder deaktivieren."
+
+#: includes/admin/settings-page.php:481
+msgid "Player defaults"
+msgstr "Player-Standardwerte"
+
+#: includes/admin/settings-page.php:482
+msgid "These defaults apply to every embed unless overridden by shortcode or block attributes."
+msgstr "Diese Standardwerte gelten für jedes Embed, sofern sie nicht per Shortcode oder Block überschrieben werden."
+
+#: includes/admin/settings-page.php:485
+#: assets/blocks/player/index.js:40
+msgid "Aspect ratio"
+msgstr "Seitenverhältnis"
+
+#: includes/admin/settings-page.php:489
+#: assets/blocks/player/index.js:62
+msgid "Autoplay"
+msgstr "Autoplay"
+
+#: includes/admin/settings-page.php:492
+#: includes/admin/settings-page.php:555
+#: assets/blocks/player/index.js:66
+#: assets/blocks/player/index.js:157
+msgid "Off"
+msgstr "Aus"
+
+#: includes/admin/settings-page.php:493
+#: assets/blocks/player/index.js:67
+msgid "Always"
+msgstr "Immer"
+
+#: includes/admin/settings-page.php:494
+#: assets/blocks/player/index.js:68
+msgid "When in view"
+msgstr "Wenn sichtbar"
+
+#: includes/admin/settings-page.php:499
+#: assets/blocks/player/index.js:75
+msgid "Controls"
+msgstr "Steuerung"
+
+#: includes/admin/settings-page.php:502
+#: assets/blocks/player/index.js:79
+msgid "Full"
+msgstr "Vollständig"
+
+#: includes/admin/settings-page.php:503
+#: assets/blocks/player/index.js:80
+msgid "Big"
+msgstr "Groß"
+
+#: includes/admin/settings-page.php:504
+#: assets/blocks/player/index.js:81
+msgid "None"
+msgstr "Keine"
+
+#: includes/admin/settings-page.php:509
+#: assets/blocks/player/index.js:88
+msgid "Controls color"
+msgstr "Steuerungsfarbe"
+
+#: includes/admin/settings-page.php:513
+#: assets/blocks/player/index.js:96
+msgid "Color opacity"
+msgstr "Farbdeckkraft"
+
+#: includes/admin/settings-page.php:517
+#: assets/blocks/player/index.js:108
+msgid "Loop"
+msgstr "Schleife"
+
+#: includes/admin/settings-page.php:521
+msgid "Loop playback"
+msgstr "Wiedergabe wiederholen"
+
+#: includes/admin/settings-page.php:526
+#: assets/blocks/player/index.js:115
+msgid "Poster URL"
+msgstr "Poster-URL"
+
+#: includes/admin/settings-page.php:530
+#: assets/blocks/player/index.js:122
+msgid "Subtitles"
+msgstr "Untertitel"
+
+#: includes/admin/settings-page.php:534
+#: assets/blocks/player/index.js:130
+msgid "Theme"
+msgstr "Theme"
+
+#: includes/admin/settings-page.php:538
+#: assets/blocks/player/index.js:137
+msgid "Quality"
+msgstr "Qualität"
+
+#: includes/admin/settings-page.php:541
+msgid "Highest available"
+msgstr "Höchste verfügbare"
+
+#: includes/admin/settings-page.php:551
+#: assets/blocks/player/index.js:152
+msgid "Audio tracks"
+msgstr "Audiospuren"
+
+#: includes/admin/settings-page.php:554
+#: assets/blocks/player/index.js:156
+msgid "Auto"
+msgstr "Automatisch"
+
+#: includes/admin/settings-page.php:560
+#: assets/blocks/player/index.js:48
+msgid "Width (px)"
+msgstr "Breite (px)"
+
+#: includes/admin/settings-page.php:564
+#: assets/blocks/player/index.js:55
+msgid "Height (px)"
+msgstr "Höhe (px)"
+
+#: includes/admin/settings-page.php:569
+msgid "Save settings"
+msgstr "Einstellungen speichern"
+
+#: includes/admin/settings-page.php:574
+msgid "Embed snippets"
+msgstr "Embed-Snippets"
+
+#: includes/admin/settings-page.php:576
+msgid "For Enfold, use the Shortcode element and paste the shortcode below. This is the most reliable integration path."
+msgstr "Für Enfold das Shortcode-Element verwenden und den Shortcode unten einfügen. Das ist der zuverlässigste Integrationsweg."
+
+#: includes/admin/settings-page.php:581
+#: assets/blocks/player/index.js:33
+msgid "Embed ID"
+msgstr "Embed-ID"
+
+#: includes/admin/settings-page.php:587
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: includes/admin/settings-page.php:590
+msgid "Recommended for Enfold and most page builders."
+msgstr "Empfohlen für Enfold und die meisten Page Builder."
+
+#: includes/admin/settings-page.php:594
+msgid "HTML markup"
+msgstr "HTML-Markup"
+
+#: includes/admin/settings-page.php:597
+msgid "Use only in HTML/code modules. The plugin loads the script automatically when this markup is detected in page content."
+msgstr "Nur in HTML-/Code-Modulen verwenden. Das Plugin lädt das Skript automatisch, wenn dieses Markup im Seiteninhalt erkannt wird."
+
+#: includes/admin/settings-page.php:613
+msgid "Never"
+msgstr "Nie"
+
+#: includes/core/plugin-updater.php:219
+msgid "No changelog available."
+msgstr "Kein Changelog verfügbar."
+
+#: assets/blocks/player/index.js:31
+msgid "Player settings"
+msgstr "Player-Einstellungen"
+
+#: assets/blocks/player/index.js:41
+msgid "Example: 16/9"
+msgstr "Beispiel: 16/9"
+
+#: assets/blocks/player/index.js:65
+#: assets/blocks/player/index.js:78
+#: assets/blocks/player/index.js:140
+#: assets/blocks/player/index.js:155
+msgid "Use global default"
+msgstr "Globalen Standard verwenden"
+
+#: assets/blocks/player/index.js:123
+msgid "Example: en, de or none"
+msgstr "Beispiel: en, de oder none"
+
+#: assets/blocks/player/index.js:141
+msgid "SD"
+msgstr ""
+
+#: assets/blocks/player/index.js:142
+msgid "HD"
+msgstr ""
+
+#: assets/blocks/player/index.js:143
+msgid "FHD"
+msgstr ""
+
+#: assets/blocks/player/index.js:144
+msgid "QHD"
+msgstr ""
+
+#: assets/blocks/player/index.js:145
+msgid "UHD"
+msgstr ""
+
+#: assets/blocks/player/index.js:169
+msgid "Mave Player"
+msgstr "Mave Player"
+
+#: assets/blocks/player/index.js:171
+msgid "Preview: mave-player embed"
+msgstr "Vorschau: mave-player Embed"
+
+#: assets/blocks/player/index.js:172
+msgid "Add an embed ID in the block settings."
+msgstr "Embed-ID in den Block-Einstellungen hinzufügen."

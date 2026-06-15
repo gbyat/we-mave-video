@@ -13,6 +13,7 @@ use Webentwicklerin\WeMaveVideo\Admin\Asset_Updater;
 use Webentwicklerin\WeMaveVideo\Admin\Cron_Scheduler;
 use Webentwicklerin\WeMaveVideo\Admin\Settings_Page;
 use Webentwicklerin\WeMaveVideo\Blocks\Player_Block;
+use Webentwicklerin\WeMaveVideo\Core\Plugin_Updater;
 use Webentwicklerin\WeMaveVideo\Frontend\Content_Detector;
 use Webentwicklerin\WeMaveVideo\Frontend\Script_Loader;
 use Webentwicklerin\WeMaveVideo\Frontend\Shortcode;
@@ -48,6 +49,10 @@ final class Plugin {
 	 */
 	public function init(): void {
 		load_plugin_textdomain( 'we-mave-video', false, dirname( plugin_basename( WE_MAVE_VIDEO_FILE ) ) . '/languages' );
+
+		if ( is_admin() || wp_doing_cron() ) {
+			new Plugin_Updater( WE_MAVE_VIDEO_FILE );
+		}
 
 		if ( is_admin() ) {
 			( new Settings_Page() )->register();

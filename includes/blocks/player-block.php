@@ -28,6 +28,7 @@ final class Player_Block {
 	 */
 	public function register(): void {
 		add_action( 'init', array( $this, 'register_block' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_editor_translations' ) );
 	}
 
 	/**
@@ -43,6 +44,19 @@ final class Player_Block {
 			array(
 				'render_callback' => array( $this, 'render' ),
 			)
+		);
+	}
+
+	/**
+	 * Load block editor script translations.
+	 *
+	 * @return void
+	 */
+	public function enqueue_editor_translations(): void {
+		wp_set_script_translations(
+			'we-mave-video-player-editor-script',
+			'we-mave-video',
+			WE_MAVE_VIDEO_PATH . 'languages'
 		);
 	}
 
