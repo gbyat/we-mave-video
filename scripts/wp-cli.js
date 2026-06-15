@@ -31,19 +31,18 @@ function getPhpCandidates() {
  */
 function getPharCandidates() {
 	return [
-		path.join(rootDir, 'tools', 'wp-cli.phar'),
 		path.join(rootDir, 'wp-cli.phar'),
 		path.join(process.env.USERPROFILE || '', 'bin', 'wp-cli.phar'),
 	];
 }
 
 /**
- * Default local WP-CLI phar path.
+ * Default local WP-CLI phar path in the project root.
  *
  * @return {string}
  */
 function getLocalPharPath() {
-	return path.join(rootDir, 'tools', 'wp-cli.phar');
+	return path.join(rootDir, 'wp-cli.phar');
 }
 
 /**

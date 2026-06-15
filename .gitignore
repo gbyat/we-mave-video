@@ -1,8 +1,10 @@
 node_modules/
 vendor/
 /assets/vendor/
-tools/wp-cli.phar
 wp-cli.phar
+
+# Editor
+.vscode/
 
 # OS / logs
 Thumbs.db

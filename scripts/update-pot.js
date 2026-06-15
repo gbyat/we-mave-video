@@ -21,7 +21,7 @@ try {
 		'.',
 		potFile,
 		`--domain=${textDomain}`,
-		'--exclude=node_modules,vendor,scripts,assets/vendor,tools',
+		'--exclude=node_modules,vendor,scripts,assets/vendor',
 		'--skip-block-json',
 	]);
 

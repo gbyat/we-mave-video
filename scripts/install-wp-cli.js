@@ -1,5 +1,5 @@
 /**
- * Download wp-cli.phar into tools/ for local i18n commands.
+ * Download wp-cli.phar into the project root for local i18n commands.
  */
 
 const fs = require('fs');
@@ -62,7 +62,6 @@ async function main() {
 	}
 
 	const pharPath = getLocalPharPath();
-	fs.mkdirSync(path.dirname(pharPath), { recursive: true });
 
 	console.log(`Downloading WP-CLI to ${pharPath}`);
 	await downloadFile(WP_CLI_PHAR_URL, pharPath);
