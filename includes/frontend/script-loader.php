@@ -82,6 +82,10 @@ final class Script_Loader {
 		self::$required = true;
 
 		if ( Borlabs_Cookie::is_enabled() ) {
+			if ( Borlabs_Cookie::has_consent() ) {
+				return;
+			}
+
 			self::$borlabs_deferred = true;
 			return;
 		}
@@ -150,6 +154,7 @@ final class Script_Loader {
 		$config = array(
 			'src'       => $src,
 			'blockerId' => Borlabs_Cookie::get_content_blocker_id(),
+			'serviceId' => Borlabs_Cookie::get_service_id(),
 		);
 
 		printf(

@@ -55,6 +55,12 @@ final class Player_Renderer {
 		$html = (string) apply_filters( 'we_mave_video_player_html', $html, $sanitized );
 
 		if ( Borlabs_Cookie::is_enabled() ) {
+			if ( Borlabs_Cookie::has_consent() ) {
+				Script_Loader::mark_required();
+
+				return $html;
+			}
+
 			Script_Loader::mark_borlabs_deferred();
 
 			return Borlabs_Cookie::block_player_html( $html );

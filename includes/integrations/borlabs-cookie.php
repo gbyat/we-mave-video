@@ -91,13 +91,70 @@ final class Borlabs_Cookie {
 	}
 
 	/**
+	 * Borlabs service ID linked to the content blocker (for consent checks).
+	 *
+	 * @return string
+	 */
+	public static function get_service_id(): string {
+		$settings   = Options::get_settings();
+		$service_id = sanitize_key( (string) ( $settings['borlabs_service_id'] ?? '' ) );
+
+		if ( '' === $service_id ) {
+			$service_id = self::get_content_blocker_id();
+		}
+
+		/**
+		 * Filter the Borlabs service ID used for mave player consent checks.
+		 *
+		 * @param string $service_id Service unique identifier.
+		 */
+		return (string) apply_filters( 'we_mave_video_borlabs_service_id', $service_id );
+	}
+
+	/**
+	 * Whether consent for the mave service or content blocker has already been given.
+	 *
+	 * @return bool
+	 */
+	public static function has_consent(): bool {
+		if ( ! self::is_api_available() ) {
+			return false;
+		}
+
+		$api = borlabsCookieApi();
+
+		if ( null === $api || ! method_exists( $api, 'consentsApi' ) ) {
+			return false;
+		}
+
+		$consents = $api->consentsApi();
+
+		if ( ! is_object( $consents ) ) {
+			return false;
+		}
+
+		$blocker_id = self::get_content_blocker_id();
+		$service_id = self::get_service_id();
+
+		if ( method_exists( $consents, 'hasConsentForContentBlockerId' ) && $consents->hasConsentForContentBlockerId( $blocker_id ) ) {
+			return true;
+		}
+
+		if ( method_exists( $consents, 'hasConsent' ) && $consents->hasConsent( $service_id ) ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
 	 * Wrap player HTML with the Borlabs content blocker.
 	 *
 	 * @param string $html Player markup.
 	 * @return string
 	 */
 	public static function block_player_html( string $html ): string {
-		if ( ! self::is_enabled() || '' === $html ) {
+		if ( ! self::is_enabled() || '' === $html || self::has_consent() ) {
 			return $html;
 		}
 
@@ -171,6 +228,12 @@ final class Borlabs_Cookie {
 					'<div class="we-mave-video-player">%s</div>',
 					$matches[0]
 				);
+
+				if ( self::has_consent() ) {
+					Script_Loader::mark_required();
+
+					return $wrapped;
+				}
 
 				Script_Loader::mark_borlabs_deferred();
 

@@ -129,6 +129,7 @@ final class Settings_Help {
 		$content .= '<li>' . esc_html__( 'Leave cookie definitions empty unless your legal review requires documenting technical session data.', 'we-mave-video' ) . '</li>';
 		$content .= '<li>' . esc_html__( 'Save and activate the service.', 'we-mave-video' ) . '</li>';
 		$content .= '</ol>';
+		$content .= '<p class="description">' . esc_html__( 'Note the service unique identifier. If it differs from the content blocker ID, enter it under Service ID in the plugin settings.', 'we-mave-video' ) . '</p>';
 
 		$content .= '<p><strong>' . esc_html__( '3. Create the content blocker', 'we-mave-video' ) . '</strong></p>';
 		$content .= '<ol>';

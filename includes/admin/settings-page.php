@@ -104,6 +104,9 @@ final class Settings_Page {
 		$blocker_id = sanitize_key( (string) ( $input['borlabs_content_blocker_id'] ?? $defaults['borlabs_content_blocker_id'] ) );
 		$output['borlabs_content_blocker_id'] = '' !== $blocker_id ? $blocker_id : Borlabs_Cookie::CONTENT_BLOCKER_ID;
 
+		$borlabs_service_id = sanitize_key( (string) ( $input['borlabs_service_id'] ?? '' ) );
+		$output['borlabs_service_id'] = $borlabs_service_id;
+
 		$output['rcb_consent_enabled'] = ! empty( $input['rcb_consent_enabled'] );
 
 		$service_id = sanitize_key( (string) ( $input['rcb_service_id'] ?? $defaults['rcb_service_id'] ) );
@@ -593,6 +596,15 @@ final class Settings_Page {
 									)
 								);
 								?>
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="we-mave-borlabs-service-id"><?php esc_html_e( 'Service ID', 'we-mave-video' ); ?></label></th>
+						<td>
+							<input id="we-mave-borlabs-service-id" type="text" class="regular-text code" name="<?php echo esc_attr( Options::OPTION_SETTINGS ); ?>[borlabs_service_id]" value="<?php echo esc_attr( (string) ( $settings['borlabs_service_id'] ?? '' ) ); ?>" placeholder="<?php echo esc_attr( Borlabs_Cookie::CONTENT_BLOCKER_ID ); ?>" />
+							<p class="description">
+								<?php esc_html_e( 'Optional. Borlabs service unique identifier for consent checks. Leave empty to use the content blocker ID.', 'we-mave-video' ); ?>
 							</p>
 						</td>
 					</tr>
