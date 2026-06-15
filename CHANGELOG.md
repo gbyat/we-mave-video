@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2026-06-15
+
+- Update plugin name formatting to "WE Mave Video" across various files for consistency and improved localization support.
+- Refactor code style in we-mave-video.php for consistency. Updated plugin name formatting and improved spacing in conditional statements and function calls.
+
 ## [1.0.2] - 2026-06-15
 
 - Update .gitignore to include .vscode directory and modify wp-cli.phar path in scripts. Adjusted update-pot.js to exclude unnecessary directories.
@@ -29,3 +34,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [1.0.1]: https://github.com/gbyat/we-mave-video/releases/tag/v1.0.1
 
 [1.0.2]: https://github.com/gbyat/we-mave-video/releases/tag/v1.0.2
+
+[1.0.3]: https://github.com/gbyat/we-mave-video/releases/tag/v1.0.3
