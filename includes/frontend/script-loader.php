@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Webentwicklerin\WeMaveVideo\Frontend;
 
 use Webentwicklerin\WeMaveVideo\Admin\Asset_Updater;
+use Webentwicklerin\WeMaveVideo\Integrations\Borlabs_Cookie;
 use Webentwicklerin\WeMaveVideo\Options;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -21,9 +22,15 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 final class Script_Loader {
 
+	public const SCRIPT_HANDLE = 'we-mave-video-mave-components';
+
+	public const BORLABS_LOADER_HANDLE = 'we-mave-video-borlabs';
+
 	private static bool $required = false;
 
-	private static bool $printed = false;
+	private static bool $borlabs_deferred = false;
+
+	private static bool $enqueued = false;
 
 	/**
 	 * Register hooks.
@@ -31,7 +38,8 @@ final class Script_Loader {
 	 * @return void
 	 */
 	public function register(): void {
-		add_action( 'wp_footer', array( $this, 'print_script' ), 20 );
+		// Footer hook: shortcodes and blocks run before footer, so requirements are known here.
+		add_action( 'wp_footer', array( $this, 'enqueue_scripts' ), 1 );
 	}
 
 	/**
@@ -44,12 +52,22 @@ final class Script_Loader {
 	}
 
 	/**
-	 * Print the module script in the footer.
+	 * Defer module loading until Borlabs unblocks the player.
 	 *
 	 * @return void
 	 */
-	public function print_script(): void {
-		if ( self::$printed ) {
+	public static function mark_borlabs_deferred(): void {
+		self::$borlabs_deferred = true;
+		self::$required         = true;
+	}
+
+	/**
+	 * Register and enqueue the player module in the footer.
+	 *
+	 * @return void
+	 */
+	public function enqueue_scripts(): void {
+		if ( self::$enqueued ) {
 			return;
 		}
 
@@ -64,12 +82,49 @@ final class Script_Loader {
 			return;
 		}
 
-		self::$printed = true;
+		self::$enqueued = true;
 
-		printf(
-			'<script type="module" src="%s"></script>',
-			esc_url( $src )
+		if ( Borlabs_Cookie::is_enabled() && self::$borlabs_deferred ) {
+			$this->enqueue_borlabs_deferred_loader( $src );
+			return;
+		}
+
+		wp_register_script(
+			self::SCRIPT_HANDLE,
+			$src,
+			array(),
+			WE_MAVE_VIDEO_VERSION,
+			true
 		);
+		wp_script_add_data( self::SCRIPT_HANDLE, 'type', 'module' );
+		wp_enqueue_script( self::SCRIPT_HANDLE );
+	}
+
+	/**
+	 * Load the module only after Borlabs unblocks the embed.
+	 *
+	 * @param string $src Module URL.
+	 * @return void
+	 */
+	private function enqueue_borlabs_deferred_loader( string $src ): void {
+		wp_register_script(
+			self::BORLABS_LOADER_HANDLE,
+			WE_MAVE_VIDEO_URL . 'assets/frontend/borlabs-unblock.js',
+			array(),
+			WE_MAVE_VIDEO_VERSION,
+			true
+		);
+
+		wp_localize_script(
+			self::BORLABS_LOADER_HANDLE,
+			'weMaveVideoBorlabs',
+			array(
+				'src'       => $src,
+				'blockerId' => Borlabs_Cookie::get_content_blocker_id(),
+			)
+		);
+
+		wp_enqueue_script( self::BORLABS_LOADER_HANDLE );
 	}
 
 	/**

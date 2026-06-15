@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Webentwicklerin\WeMaveVideo\Frontend;
 
+use Webentwicklerin\WeMaveVideo\Integrations\Borlabs_Cookie;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -43,13 +45,27 @@ final class Content_Detector {
 		}
 
 		if ( $this->content_has_player( $post->post_content ) ) {
-			Script_Loader::mark_required();
+			$this->mark_script_needed();
 			return;
 		}
 
 		if ( $this->meta_has_player( (int) $post->ID ) ) {
-			Script_Loader::mark_required();
+			$this->mark_script_needed();
 		}
+	}
+
+	/**
+	 * Mark the player script for the current request.
+	 *
+	 * @return void
+	 */
+	private function mark_script_needed(): void {
+		if ( Borlabs_Cookie::is_enabled() ) {
+			Script_Loader::mark_borlabs_deferred();
+			return;
+		}
+
+		Script_Loader::mark_required();
 	}
 
 	/**

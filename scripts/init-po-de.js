@@ -113,6 +113,17 @@ const translations = {
 	'Mave Player': 'Mave Player',
 	'Preview: mave-player embed': 'Vorschau: mave-player Embed',
 	'Add an embed ID in the block settings.': 'Embed-ID in den Block-Einstellungen hinzufügen.',
+	'Borlabs Cookie': 'Borlabs Cookie',
+	'Block mave player embeds as external media until consent is given. mave.io does not use tracking cookies; this is a content blocker only.':
+		'mave-Player-Embeds bis zur Einwilligung als externes Medium blockieren. mave.io verwendet keine Tracking-Cookies; es handelt sich nur um einen Content Blocker.',
+	'Content blocker': 'Content Blocker',
+	'Wrap player embeds with the Borlabs content blocker.':
+		'Player-Embeds mit dem Borlabs Content Blocker umschließen.',
+	'The Borlabs Cookie API is not available on this request. Save settings after Borlabs Cookie has finished loading.':
+		'Die Borlabs-Cookie-API ist in dieser Anfrage nicht verfügbar. Einstellungen speichern, nachdem Borlabs Cookie vollständig geladen ist.',
+	'Content blocker ID': 'Content-Blocker-ID',
+	'Create a content blocker in Borlabs Cookie with this ID (default: %1$s). Assign it to the <strong>External Media</strong> service group. Privacy policy: <a href="%2$s" target="_blank" rel="noopener noreferrer">mave.io privacy</a>. Suggested hostnames: %3$s.':
+		'In Borlabs Cookie einen Content Blocker mit dieser ID anlegen (Standard: %1$s). Der Service-Gruppe <strong>Externe Medien</strong> zuordnen. Datenschutzerklärung: <a href="%2$s" target="_blank" rel="noopener noreferrer">mave.io Datenschutz</a>. Vorgeschlagene Hostnames: %3$s.',
 };
 
 if (!fs.existsSync(potFile)) {

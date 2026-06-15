@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Webentwicklerin\WeMaveVideo\Admin;
 
+use Webentwicklerin\WeMaveVideo\Integrations\Borlabs_Cookie;
 use Webentwicklerin\WeMaveVideo\Options;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -92,6 +93,11 @@ final class Settings_Page {
 		if ( in_array( $github_updates, array( 'yes', 'no' ), true ) ) {
 			$output['github_updates_enabled'] = $github_updates;
 		}
+
+		$output['borlabs_content_blocker_enabled'] = ! empty( $input['borlabs_content_blocker_enabled'] );
+
+		$blocker_id = sanitize_key( (string) ( $input['borlabs_content_blocker_id'] ?? $defaults['borlabs_content_blocker_id'] ) );
+		$output['borlabs_content_blocker_id'] = '' !== $blocker_id ? $blocker_id : Borlabs_Cookie::CONTENT_BLOCKER_ID;
 
 		$player_input = $input['player_defaults'] ?? array();
 		if ( ! is_array( $player_input ) ) {
@@ -538,6 +544,49 @@ final class Settings_Page {
 						<td><input id="we-mave-height" type="number" min="0" class="small-text" name="<?php echo esc_attr( Options::OPTION_SETTINGS ); ?>[player_defaults][height]" value="<?php echo esc_attr( (string) $defaults['height'] ); ?>" /></td>
 					</tr>
 				</table>
+
+				<?php if ( Borlabs_Cookie::is_plugin_active() ) : ?>
+				<h2><?php esc_html_e( 'Borlabs Cookie', 'we-mave-video' ); ?></h2>
+				<p class="description">
+					<?php esc_html_e( 'Block mave player embeds as external media until consent is given. mave.io does not use tracking cookies; this is a content blocker only.', 'we-mave-video' ); ?>
+				</p>
+				<table class="form-table" role="presentation">
+					<tr>
+						<th scope="row"><?php esc_html_e( 'Content blocker', 'we-mave-video' ); ?></th>
+						<td>
+							<label>
+								<input type="checkbox" name="<?php echo esc_attr( Options::OPTION_SETTINGS ); ?>[borlabs_content_blocker_enabled]" value="1" <?php checked( ! empty( $settings['borlabs_content_blocker_enabled'] ) ); ?> <?php disabled( ! Borlabs_Cookie::is_api_available() ); ?> />
+								<?php esc_html_e( 'Wrap player embeds with the Borlabs content blocker.', 'we-mave-video' ); ?>
+							</label>
+							<?php if ( ! Borlabs_Cookie::is_api_available() ) : ?>
+								<p class="description"><?php esc_html_e( 'The Borlabs Cookie API is not available on this request. Save settings after Borlabs Cookie has finished loading.', 'we-mave-video' ); ?></p>
+							<?php endif; ?>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="we-mave-borlabs-blocker-id"><?php esc_html_e( 'Content blocker ID', 'we-mave-video' ); ?></label></th>
+						<td>
+							<input id="we-mave-borlabs-blocker-id" type="text" class="regular-text code" name="<?php echo esc_attr( Options::OPTION_SETTINGS ); ?>[borlabs_content_blocker_id]" value="<?php echo esc_attr( (string) ( $settings['borlabs_content_blocker_id'] ?? Borlabs_Cookie::CONTENT_BLOCKER_ID ) ); ?>" />
+							<p class="description">
+								<?php
+								echo wp_kses_post(
+									sprintf(
+										/* translators: 1: default content blocker ID, 2: privacy policy URL */
+										__(
+											'Create a content blocker in Borlabs Cookie with this ID (default: %1$s). Assign it to the <strong>External Media</strong> service group. Privacy policy: <a href="%2$s" target="_blank" rel="noopener noreferrer">mave.io privacy</a>. Suggested hostnames: %3$s.',
+											'we-mave-video'
+										),
+										esc_html( Borlabs_Cookie::CONTENT_BLOCKER_ID ),
+										esc_url( Borlabs_Cookie::PRIVACY_URL ),
+										esc_html( implode( ', ', Borlabs_Cookie::suggested_hostnames() ) )
+									)
+								);
+								?>
+							</p>
+						</td>
+					</tr>
+				</table>
+				<?php endif; ?>
 
 				<h2><?php esc_html_e( 'Plugin updates', 'we-mave-video' ); ?></h2>
 				<table class="form-table" role="presentation">

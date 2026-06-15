@@ -17,6 +17,7 @@ use Webentwicklerin\WeMaveVideo\Core\Plugin_Updater;
 use Webentwicklerin\WeMaveVideo\Frontend\Content_Detector;
 use Webentwicklerin\WeMaveVideo\Frontend\Script_Loader;
 use Webentwicklerin\WeMaveVideo\Frontend\Shortcode;
+use Webentwicklerin\WeMaveVideo\Integrations\Borlabs_Cookie;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -66,6 +67,8 @@ final class Plugin {
 		( new Script_Loader() )->register();
 		( new Content_Detector() )->register();
 		( new Player_Block() )->register();
+
+		Borlabs_Cookie::register_hooks();
 	}
 
 	/**

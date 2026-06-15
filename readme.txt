@@ -22,6 +22,7 @@ Features:
 * Copyable snippets for Enfold and other page builders
 * Optional Gutenberg block
 * Global player defaults with per-embed overrides
+* Optional Borlabs Cookie content blocker integration (external media)
 
 The bundled mave components are licensed under AGPL-3.0-or-later.
 
@@ -41,6 +42,10 @@ Use Enfold's Shortcode element and paste `[we_mave_player embed="YOUR_EMBED_ID"]
 = Where does the plugin download components from? =
 
 From the official npm registry package `@maveio/components`.
+
+= How do I use Borlabs Cookie with mave videos? =
+
+Install Borlabs Cookie, create a content blocker with ID `we-mave-video`, assign it to the External Media service group, and set the privacy policy URL to https://www.mave.io/privacy/. Enable the integration under Settings → WE Mave Video. mave.io does not use tracking cookies; only the embed is blocked until consent.
 
 == Changelog ==
 

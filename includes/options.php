@@ -33,6 +33,8 @@ final class Options {
 			'load_globally'          => false,
 			'load_from_cdn'          => false,
 			'github_updates_enabled' => 'yes',
+			'borlabs_content_blocker_enabled' => true,
+			'borlabs_content_blocker_id'      => 'we-mave-video',
 			'player_defaults' => array(
 				'aspect_ratio' => '16/9',
 				'autoplay'     => 'false',
