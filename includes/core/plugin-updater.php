@@ -9,7 +9,9 @@ declare(strict_types=1);
 
 namespace Webentwicklerin\WeMaveVideo\Core;
 
+use Webentwicklerin\WeMaveVideo\Admin\Asset_Updater;
 use Webentwicklerin\WeMaveVideo\Options;
+use Webentwicklerin\WeMaveVideo\Vendor_Storage;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -287,6 +289,13 @@ final class Plugin_Updater {
 
 		if ( defined( 'WE_MAVE_VIDEO_GITHUB_REPO' ) ) {
 			delete_transient( 'wmv_github_release_zip_' . md5( WE_MAVE_VIDEO_GITHUB_REPO ) );
+		}
+
+		Vendor_Storage::repair_installation_state();
+
+		$updater = new Asset_Updater();
+		if ( ! $updater->is_ready() && ! $updater->is_using_cdn() ) {
+			$updater->maybe_update( true );
 		}
 	}
 

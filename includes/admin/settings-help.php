@@ -94,30 +94,70 @@ final class Settings_Help {
 	private function get_borlabs_help_content(): string {
 		$blocker_id = Borlabs_Cookie::CONTENT_BLOCKER_ID;
 		$hosts      = implode( ', ', Borlabs_Cookie::suggested_hostnames() );
+		$privacy    = '<a href="' . esc_url( Borlabs_Cookie::PRIVACY_URL ) . '" target="_blank" rel="noopener noreferrer">mave.io/privacy</a>';
 
-		$content  = '<p>' . esc_html__( 'mave.io does not use tracking cookies. Use a content blocker only and assign it to the external media service group.', 'we-mave-video' ) . '</p>';
+		$content  = '<p>' . esc_html__( 'mave.io does not use tracking cookies. You still need a content blocker for external media because video streams are loaded from mave infrastructure after consent. In Borlabs Cookie 3, set up a provider, a service, and a content blocker, then enable the integration in this plugin.', 'we-mave-video' ) . '</p>';
+
+		$content .= '<p><strong>' . esc_html__( '1. Create a provider (required)', 'we-mave-video' ) . '</strong></p>';
+		$content .= '<p>' . esc_html__( 'Every content blocker must be linked to a provider.', 'we-mave-video' ) . '</p>';
 		$content .= '<ol>';
-		$content .= '<li>' . esc_html__( 'In Borlabs Cookie, open Content Blocker and click Add New.', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . esc_html__( 'Open Borlabs Cookie → Consent Management → Providers.', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . esc_html__( 'Click Add New and enter a name, for example “mave.io”.', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . sprintf(
+			/* translators: %s: privacy policy URL link */
+			esc_html__( 'Set the privacy policy URL to %s.', 'we-mave-video' ),
+			$privacy
+		) . '</li>';
+		$content .= '<li>' . esc_html__( 'Add the provider address if you want it shown in the consent dialog.', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . esc_html__( 'Save and activate the provider.', 'we-mave-video' ) . '</li>';
+		$content .= '</ol>';
+
+		$content .= '<p><strong>' . esc_html__( '2. Create a service (recommended)', 'we-mave-video' ) . '</strong></p>';
+		$content .= '<p>' . esc_html__( 'Linking a service to the content blocker allows automatic unblocking for visitors who already accepted that service, and extends the information shown on the blocker preview.', 'we-mave-video' ) . '</p>';
+		$content .= '<ol>';
+		$content .= '<li>' . esc_html__( 'Open Borlabs Cookie → Consent Management → Services.', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . esc_html__( 'Click Add New (or use the Library if a mave template becomes available later).', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . esc_html__( 'Name the service, for example “mave.io video player”.', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . esc_html__( 'Assign the service to the External Media group.', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . esc_html__( 'Select the mave.io provider you created in step 1.', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . esc_html__( 'Describe the purpose: embedding self-hosted mave.io videos. No tracking cookies are set by mave.io.', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . sprintf(
+			/* translators: %s: privacy policy URL link */
+			esc_html__( 'Set the privacy policy URL to %s.', 'we-mave-video' ),
+			$privacy
+		) . '</li>';
+		$content .= '<li>' . esc_html__( 'Leave cookie definitions empty unless your legal review requires documenting technical session data.', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . esc_html__( 'Save and activate the service.', 'we-mave-video' ) . '</li>';
+		$content .= '</ol>';
+
+		$content .= '<p><strong>' . esc_html__( '3. Create the content blocker', 'we-mave-video' ) . '</strong></p>';
+		$content .= '<ol>';
+		$content .= '<li>' . esc_html__( 'Open Borlabs Cookie → Content Blocker → Add New.', 'we-mave-video' ) . '</li>';
 		$content .= '<li>' . sprintf(
 			/* translators: %s: content blocker ID */
-			esc_html__( 'Set the ID to %s (or match the ID configured on this settings page).', 'we-mave-video' ),
+			esc_html__( 'Set the ID to %s (must match the ID on this settings page).', 'we-mave-video' ),
 			'<code>' . esc_html( $blocker_id ) . '</code>'
 		) . '</li>';
-		$content .= '<li>' . esc_html__( 'Assign the blocker to the External Media service group.', 'we-mave-video' ) . '</li>';
-		$content .= '<li>' . sprintf(
-			/* translators: %s: privacy policy URL */
-			esc_html__( 'Set the privacy policy URL to %s.', 'we-mave-video' ),
-			'<a href="' . esc_url( Borlabs_Cookie::PRIVACY_URL ) . '" target="_blank" rel="noopener noreferrer">mave.io/privacy</a>'
-		) . '</li>';
+		$content .= '<li>' . esc_html__( 'Choose a name, for example “WE Mave Video”.', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . esc_html__( 'In Service information, select the mave.io service from step 2.', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . esc_html__( 'In Provider information, select the mave.io provider from step 1 (required).', 'we-mave-video' ) . '</li>';
 		$content .= '<li>' . sprintf(
 			/* translators: %s: comma-separated hostnames */
-			esc_html__( 'Add these hostnames if prompted: %s.', 'we-mave-video' ),
+			esc_html__( 'Under hosts / URLs, add: %s. This blocks external requests until consent.', 'we-mave-video' ),
 			'<code>' . esc_html( $hosts ) . '</code>'
 		) . '</li>';
-		$content .= '<li>' . esc_html__( 'Activate the content blocker in Borlabs Cookie.', 'we-mave-video' ) . '</li>';
-		$content .= '<li>' . esc_html__( 'On this settings page, enable “Wrap player embeds with the Borlabs content blocker”.', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . esc_html__( 'Customize the preview text if needed, for example “Load video” and a short note that mave.io does not use tracking cookies.', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . esc_html__( 'Activate the content blocker.', 'we-mave-video' ) . '</li>';
 		$content .= '</ol>';
-		$content .= '<p>' . esc_html__( 'No script blocker is required for the self-hosted player file. If you enable “Load from official CDN” for debugging, keep the hostnames above so Borlabs can block the external script until consent.', 'we-mave-video' ) . '</p>';
+
+		$content .= '<p><strong>' . esc_html__( '4. Enable this plugin integration', 'we-mave-video' ) . '</strong></p>';
+		$content .= '<ol>';
+		$content .= '<li>' . esc_html__( 'On this settings page, enable “Wrap player embeds with the Borlabs content blocker”.', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . esc_html__( 'Save settings and test a page with a mave embed in a private browser window.', 'we-mave-video' ) . '</li>';
+		$content .= '</ol>';
+
+		$content .= '<p><strong>' . esc_html__( 'CDN debug mode', 'we-mave-video' ) . '</strong></p>';
+		$content .= '<p>' . esc_html__( 'No script blocker is required when the player file is self-hosted on your domain. If you enable “Load from official CDN” for debugging, keep the hostnames above so Borlabs can block the external module script until consent.', 'we-mave-video' ) . '</p>';
 
 		if ( ! Borlabs_Cookie::is_plugin_active() ) {
 			$content .= '<p><em>' . esc_html__( 'Borlabs Cookie is not active on this site. Install and activate it before using this integration.', 'we-mave-video' ) . '</em></p>';
@@ -134,30 +174,51 @@ final class Settings_Help {
 	private function get_rcb_help_content(): string {
 		$service_id = Real_Cookie_Banner::SERVICE_ID;
 		$hosts      = implode( ', ', Real_Cookie_Banner::suggested_hostnames() );
+		$privacy    = '<a href="' . esc_url( Real_Cookie_Banner::PRIVACY_URL ) . '" target="_blank" rel="noopener noreferrer">mave.io/privacy</a>';
 
 		$content  = '<p>' . esc_html__( 'mave.io does not use tracking cookies. Create a service for external media and let this plugin wait for consent before loading the player.', 'we-mave-video' ) . '</p>';
+
+		$content .= '<p><strong>' . esc_html__( '1. Create the service', 'we-mave-video' ) . '</strong></p>';
 		$content .= '<ol>';
-		$content .= '<li>' . esc_html__( 'In Real Cookie Banner, open Cookies and add a new service (or create from scratch).', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . esc_html__( 'Open Real Cookie Banner → Cookies → Add service (or create from scratch).', 'we-mave-video' ) . '</li>';
 		$content .= '<li>' . sprintf(
 			/* translators: %s: service unique identifier */
-			esc_html__( 'Set the unique identifier to %s (or match the identifier on this settings page).', 'we-mave-video' ),
+			esc_html__( 'Set the unique identifier to %s (must match this settings page).', 'we-mave-video' ),
 			'<code>' . esc_html( $service_id ) . '</code>'
 		) . '</li>';
+		$content .= '<li>' . esc_html__( 'Name the service, for example “mave.io video player”.', 'we-mave-video' ) . '</li>';
 		$content .= '<li>' . esc_html__( 'Assign the service to the External media group.', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . esc_html__( 'Describe the purpose: external video hosting via mave.io. No tracking cookies.', 'we-mave-video' ) . '</li>';
 		$content .= '<li>' . sprintf(
-			/* translators: %s: privacy policy URL */
+			/* translators: %s: privacy policy URL link */
 			esc_html__( 'Set the privacy policy URL to %s.', 'we-mave-video' ),
-			'<a href="' . esc_url( Real_Cookie_Banner::PRIVACY_URL ) . '" target="_blank" rel="noopener noreferrer">mave.io/privacy</a>'
+			$privacy
 		) . '</li>';
-		$content .= '<li>' . esc_html__( 'Optional: add a content blocker for the player markup or hostnames if you want Real Cookie Banner to manage the placeholder UI as well.', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . esc_html__( 'Do not add marketing or statistics cookies for mave.io unless your legal review says otherwise.', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . esc_html__( 'Save and activate the service.', 'we-mave-video' ) . '</li>';
+		$content .= '</ol>';
+
+		$content .= '<p><strong>' . esc_html__( '2. Optional content blocker in Real Cookie Banner', 'we-mave-video' ) . '</strong></p>';
+		$content .= '<p>' . esc_html__( 'This plugin already shows a placeholder and defers the player script until consent. You can additionally create a content blocker in Real Cookie Banner if you want RCB to manage blocking by hostname or custom selectors.', 'we-mave-video' ) . '</p>';
+		$content .= '<ol>';
+		$content .= '<li>' . esc_html__( 'Open Real Cookie Banner → Cookies → Content blocker → Add content blocker.', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . esc_html__( 'Link the blocker to the mave.io service from step 1.', 'we-mave-video' ) . '</li>';
 		$content .= '<li>' . sprintf(
 			/* translators: %s: comma-separated hostnames */
-			esc_html__( 'Suggested hostnames for a content blocker: %s.', 'we-mave-video' ),
+			esc_html__( 'Suggested hostnames: %s.', 'we-mave-video' ),
 			'<code>' . esc_html( $hosts ) . '</code>'
 		) . '</li>';
-		$content .= '<li>' . esc_html__( 'On this settings page, enable “Wait for Real Cookie Banner consent before loading the player”.', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . esc_html__( 'Optional: block custom elements such as mave-player or .we-mave-video-player.', 'we-mave-video' ) . '</li>';
 		$content .= '</ol>';
-		$content .= '<p>' . esc_html__( 'This integration also works when you load the player script from the official mave CDN (debug setting). The script is deferred until consent in both cases.', 'we-mave-video' ) . '</p>';
+
+		$content .= '<p><strong>' . esc_html__( '3. Enable this plugin integration', 'we-mave-video' ) . '</strong></p>';
+		$content .= '<ol>';
+		$content .= '<li>' . esc_html__( 'On this settings page, enable “Wait for Real Cookie Banner consent before loading the player”.', 'we-mave-video' ) . '</li>';
+		$content .= '<li>' . esc_html__( 'Save settings and test in a private browser window.', 'we-mave-video' ) . '</li>';
+		$content .= '</ol>';
+
+		$content .= '<p><strong>' . esc_html__( 'CDN debug mode', 'we-mave-video' ) . '</strong></p>';
+		$content .= '<p>' . esc_html__( 'The integration also works when you load the player script from the official mave CDN. The script is deferred until consent in both cases.', 'we-mave-video' ) . '</p>';
 		$content .= '<p>' . esc_html__( 'If Borlabs Cookie is active and its content blocker integration is enabled, Borlabs takes precedence and Real Cookie Banner integration is skipped.', 'we-mave-video' ) . '</p>';
 
 		if ( ! Real_Cookie_Banner::is_plugin_active() ) {

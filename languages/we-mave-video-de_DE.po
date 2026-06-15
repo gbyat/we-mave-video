@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-15T09:40:42+00:00\n"
+"POT-Creation-Date: 2026-06-15T09:59:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -136,111 +136,243 @@ msgstr "Nutze den Snippet-Generator unten auf dieser Seite, um fertige Beispiele
 msgid "Player defaults on this page apply to every embed unless overridden by shortcode or block attributes."
 msgstr ""
 
-#: includes/admin/settings-help.php:98
-msgid "mave.io does not use tracking cookies. Use a content blocker only and assign it to the external media service group."
-msgstr "mave.io verwendet keine Tracking-Cookies. Nur einen Content Blocker verwenden und der Service-Gruppe für externe Medien zuordnen."
+#: includes/admin/settings-help.php:99
+msgid "mave.io does not use tracking cookies. You still need a content blocker for external media because video streams are loaded from mave infrastructure after consent. In Borlabs Cookie 3, set up a provider, a service, and a content blocker, then enable the integration in this plugin."
+msgstr "mave.io verwendet keine Tracking-Cookies. Für externe Medien brauchst du trotzdem einen Content Blocker, weil Videostreams nach der Einwilligung von der mave-Infrastruktur geladen werden. In Borlabs Cookie 3: Provider, Service und Content Blocker anlegen, dann die Integration in diesem Plugin aktivieren."
 
-#: includes/admin/settings-help.php:100
-msgid "In Borlabs Cookie, open Content Blocker and click Add New."
-msgstr "In Borlabs Cookie Content Blocker öffnen und Neu hinzufügen."
+#: includes/admin/settings-help.php:101
+msgid "1. Create a provider (required)"
+msgstr "1. Provider anlegen (Pflicht)"
 
-#. translators: %s: content blocker ID
-#: includes/admin/settings-help.php:103
-#, php-format
-msgid "Set the ID to %s (or match the ID configured on this settings page)."
-msgstr "ID auf %s setzen (oder an die ID auf dieser Einstellungsseite anpassen)."
+#: includes/admin/settings-help.php:102
+msgid "Every content blocker must be linked to a provider."
+msgstr "Jeder Content Blocker muss mit einem Provider verknüpft sein."
 
-#: includes/admin/settings-help.php:106
-msgid "Assign the blocker to the External Media service group."
-msgstr "Den Blocker der Service-Gruppe Externe Medien zuordnen."
+#: includes/admin/settings-help.php:104
+msgid "Open Borlabs Cookie → Consent Management → Providers."
+msgstr "Borlabs Cookie → Consent Management → Providers öffnen."
 
-#. translators: %s: privacy policy URL
-#: includes/admin/settings-help.php:109
-#: includes/admin/settings-help.php:149
+#: includes/admin/settings-help.php:105
+msgid "Click Add New and enter a name, for example “mave.io”."
+msgstr "Neu hinzufügen und einen Namen eingeben, z. B. „mave.io“."
+
+#. translators: %s: privacy policy URL link
+#: includes/admin/settings-help.php:108
+#: includes/admin/settings-help.php:126
+#: includes/admin/settings-help.php:194
 #, php-format
 msgid "Set the privacy policy URL to %s."
 msgstr "Datenschutz-URL auf %s setzen."
 
-#. translators: %s: comma-separated hostnames
-#: includes/admin/settings-help.php:114
-#, php-format
-msgid "Add these hostnames if prompted: %s."
-msgstr "Diese Hostnames bei Bedarf ergänzen: %s."
+#: includes/admin/settings-help.php:111
+msgid "Add the provider address if you want it shown in the consent dialog."
+msgstr "Provider-Adresse ergänzen, wenn sie im Consent-Dialog angezeigt werden soll."
 
-#: includes/admin/settings-help.php:117
-msgid "Activate the content blocker in Borlabs Cookie."
-msgstr "Den Content Blocker in Borlabs Cookie aktivieren."
+#: includes/admin/settings-help.php:112
+msgid "Save and activate the provider."
+msgstr "Provider speichern und aktivieren."
+
+#: includes/admin/settings-help.php:115
+msgid "2. Create a service (recommended)"
+msgstr "2. Service anlegen (empfohlen)"
+
+#: includes/admin/settings-help.php:116
+msgid "Linking a service to the content blocker allows automatic unblocking for visitors who already accepted that service, and extends the information shown on the blocker preview."
+msgstr "Die Verknüpfung mit einem Service ermöglicht automatisches Freigeben für Besucher, die den Service schon akzeptiert haben, und erweitert die Infos in der Blocker-Vorschau."
 
 #: includes/admin/settings-help.php:118
+msgid "Open Borlabs Cookie → Consent Management → Services."
+msgstr "Borlabs Cookie → Consent Management → Services öffnen."
+
+#: includes/admin/settings-help.php:119
+msgid "Click Add New (or use the Library if a mave template becomes available later)."
+msgstr "Neu hinzufügen (oder später die Library, falls ein mave-Template verfügbar wird)."
+
+#: includes/admin/settings-help.php:120
+#: includes/admin/settings-help.php:189
+msgid "Name the service, for example “mave.io video player”."
+msgstr "Service benennen, z. B. „mave.io video player“."
+
+#: includes/admin/settings-help.php:121
+msgid "Assign the service to the External Media group."
+msgstr "Service der Gruppe Externe Medien zuordnen."
+
+#: includes/admin/settings-help.php:122
+msgid "Select the mave.io provider you created in step 1."
+msgstr "Den in Schritt 1 angelegten mave.io-Provider auswählen."
+
+#: includes/admin/settings-help.php:123
+msgid "Describe the purpose: embedding self-hosted mave.io videos. No tracking cookies are set by mave.io."
+msgstr "Zweck beschreiben: Einbindung selbst gehosteter mave.io-Videos. mave.io setzt keine Tracking-Cookies."
+
+#: includes/admin/settings-help.php:129
+msgid "Leave cookie definitions empty unless your legal review requires documenting technical session data."
+msgstr "Cookie-Definitionen leer lassen, sofern deine Rechtsprüfung keine technischen Session-Daten verlangt."
+
+#: includes/admin/settings-help.php:130
+#: includes/admin/settings-help.php:198
+msgid "Save and activate the service."
+msgstr "Service speichern und aktivieren."
+
+#: includes/admin/settings-help.php:133
+msgid "3. Create the content blocker"
+msgstr "3. Content Blocker anlegen"
+
+#: includes/admin/settings-help.php:135
+msgid "Open Borlabs Cookie → Content Blocker → Add New."
+msgstr "Borlabs Cookie → Content Blocker → Neu hinzufügen."
+
+#. translators: %s: content blocker ID
+#: includes/admin/settings-help.php:138
+#, php-format
+msgid "Set the ID to %s (must match the ID on this settings page)."
+msgstr "ID auf %s setzen (muss mit der ID auf dieser Einstellungsseite übereinstimmen)."
+
+#: includes/admin/settings-help.php:141
+msgid "Choose a name, for example “WE Mave Video”."
+msgstr "Namen wählen, z. B. „WE Mave Video“."
+
+#: includes/admin/settings-help.php:142
+msgid "In Service information, select the mave.io service from step 2."
+msgstr "Unter Service-Informationen den mave.io-Service aus Schritt 2 auswählen."
+
+#: includes/admin/settings-help.php:143
+msgid "In Provider information, select the mave.io provider from step 1 (required)."
+msgstr "Unter Provider-Informationen den mave.io-Provider aus Schritt 1 auswählen (Pflicht)."
+
+#. translators: %s: comma-separated hostnames
+#: includes/admin/settings-help.php:146
+#, php-format
+msgid "Under hosts / URLs, add: %s. This blocks external requests until consent."
+msgstr "Unter Hosts/URLs ergänzen: %s. Blockiert externe Anfragen bis zur Einwilligung."
+
+#: includes/admin/settings-help.php:149
+msgid "Customize the preview text if needed, for example “Load video” and a short note that mave.io does not use tracking cookies."
+msgstr "Vorschautext bei Bedarf anpassen, z. B. „Video laden“ und Hinweis, dass mave.io keine Tracking-Cookies verwendet."
+
+#: includes/admin/settings-help.php:150
+msgid "Activate the content blocker."
+msgstr "Content Blocker aktivieren."
+
+#: includes/admin/settings-help.php:153
+msgid "4. Enable this plugin integration"
+msgstr "4. Plugin-Integration aktivieren"
+
+#: includes/admin/settings-help.php:155
 msgid "On this settings page, enable “Wrap player embeds with the Borlabs content blocker”."
 msgstr "Auf dieser Seite „Player-Embeds mit dem Borlabs Content Blocker umschließen“ aktivieren."
 
-#: includes/admin/settings-help.php:120
-msgid "No script blocker is required for the self-hosted player file. If you enable “Load from official CDN” for debugging, keep the hostnames above so Borlabs can block the external script until consent."
-msgstr "Für die selbst gehostete Player-Datei ist kein Script Blocker nötig. Bei „Vom offiziellen CDN laden“ (Debug) die Hostnames oben beibehalten, damit Borlabs das externe Skript bis zur Einwilligung blockiert."
+#: includes/admin/settings-help.php:156
+msgid "Save settings and test a page with a mave embed in a private browser window."
+msgstr "Einstellungen speichern und eine Seite mit mave-Embed im privaten Browserfenster testen."
 
-#: includes/admin/settings-help.php:123
+#: includes/admin/settings-help.php:159
+#: includes/admin/settings-help.php:220
+msgid "CDN debug mode"
+msgstr "CDN-Debug-Modus"
+
+#: includes/admin/settings-help.php:160
+msgid "No script blocker is required when the player file is self-hosted on your domain. If you enable “Load from official CDN” for debugging, keep the hostnames above so Borlabs can block the external module script until consent."
+msgstr "Kein Script Blocker nötig, wenn die Player-Datei auf deiner Domain liegt. Bei „Vom offiziellen CDN laden“ die Hostnames oben beibehalten, damit Borlabs das externe Modul-Skript bis zur Einwilligung blockiert."
+
+#: includes/admin/settings-help.php:163
 msgid "Borlabs Cookie is not active on this site. Install and activate it before using this integration."
 msgstr "Borlabs Cookie ist auf dieser Website nicht aktiv. Vor der Integration installieren und aktivieren."
 
-#: includes/admin/settings-help.php:138
+#: includes/admin/settings-help.php:179
 msgid "mave.io does not use tracking cookies. Create a service for external media and let this plugin wait for consent before loading the player."
 msgstr "mave.io verwendet keine Tracking-Cookies. Einen Service für externe Medien anlegen; dieses Plugin wartet mit dem Player-Laden auf die Einwilligung."
 
-#: includes/admin/settings-help.php:140
-msgid "In Real Cookie Banner, open Cookies and add a new service (or create from scratch)."
-msgstr "In Real Cookie Banner Cookies öffnen und einen neuen Service anlegen (oder von Grund auf erstellen)."
+#: includes/admin/settings-help.php:181
+msgid "1. Create the service"
+msgstr "1. Service anlegen"
+
+#: includes/admin/settings-help.php:183
+msgid "Open Real Cookie Banner → Cookies → Add service (or create from scratch)."
+msgstr "Real Cookie Banner → Cookies → Service hinzufügen (oder von Grund auf erstellen)."
 
 #. translators: %s: service unique identifier
-#: includes/admin/settings-help.php:143
+#: includes/admin/settings-help.php:186
 #, php-format
-msgid "Set the unique identifier to %s (or match the identifier on this settings page)."
-msgstr "Eindeutige Kennung auf %s setzen (oder an die Kennung auf dieser Einstellungsseite anpassen)."
+msgid "Set the unique identifier to %s (must match this settings page)."
+msgstr "Eindeutige Kennung auf %s setzen (muss mit dieser Einstellungsseite übereinstimmen)."
 
-#: includes/admin/settings-help.php:146
+#: includes/admin/settings-help.php:190
 msgid "Assign the service to the External media group."
-msgstr "Den Service der Gruppe Externe Medien zuordnen."
+msgstr ""
 
-#: includes/admin/settings-help.php:152
-msgid "Optional: add a content blocker for the player markup or hostnames if you want Real Cookie Banner to manage the placeholder UI as well."
-msgstr "Optional: Content Blocker für Player-Markup oder Hostnames, wenn Real Cookie Banner auch die Platzhalter-UI steuern soll."
+#: includes/admin/settings-help.php:191
+msgid "Describe the purpose: external video hosting via mave.io. No tracking cookies."
+msgstr "Zweck: externes Video-Hosting über mave.io. Keine Tracking-Cookies."
+
+#: includes/admin/settings-help.php:197
+msgid "Do not add marketing or statistics cookies for mave.io unless your legal review says otherwise."
+msgstr "Keine Marketing- oder Statistik-Cookies für mave.io, sofern deine Rechtsprüfung nichts anderes verlangt."
+
+#: includes/admin/settings-help.php:201
+msgid "2. Optional content blocker in Real Cookie Banner"
+msgstr "2. Optionaler Content Blocker in Real Cookie Banner"
+
+#: includes/admin/settings-help.php:202
+msgid "This plugin already shows a placeholder and defers the player script until consent. You can additionally create a content blocker in Real Cookie Banner if you want RCB to manage blocking by hostname or custom selectors."
+msgstr "Dieses Plugin zeigt bereits einen Platzhalter und lädt das Skript erst nach Einwilligung. Optional kannst du in Real Cookie Banner einen Content Blocker für Hostnames oder Selektoren anlegen."
+
+#: includes/admin/settings-help.php:204
+msgid "Open Real Cookie Banner → Cookies → Content blocker → Add content blocker."
+msgstr "Real Cookie Banner → Cookies → Content Blocker → Content Blocker hinzufügen."
+
+#: includes/admin/settings-help.php:205
+msgid "Link the blocker to the mave.io service from step 1."
+msgstr "Blocker mit dem mave.io-Service aus Schritt 1 verknüpfen."
 
 #. translators: %s: comma-separated hostnames
-#: includes/admin/settings-help.php:155
+#: includes/admin/settings-help.php:208
 #, php-format
-msgid "Suggested hostnames for a content blocker: %s."
-msgstr "Vorgeschlagene Hostnames für einen Content Blocker: %s."
+msgid "Suggested hostnames: %s."
+msgstr ""
 
-#: includes/admin/settings-help.php:158
+#: includes/admin/settings-help.php:211
+msgid "Optional: block custom elements such as mave-player or .we-mave-video-player."
+msgstr "Optional: Custom Elements wie mave-player oder .we-mave-video-player blockieren."
+
+#: includes/admin/settings-help.php:214
+msgid "3. Enable this plugin integration"
+msgstr "3. Plugin-Integration aktivieren"
+
+#: includes/admin/settings-help.php:216
 msgid "On this settings page, enable “Wait for Real Cookie Banner consent before loading the player”."
-msgstr "Auf dieser Seite „Vor dem Laden des Players auf die Einwilligung in Real Cookie Banner warten“ aktivieren."
+msgstr ""
 
-#: includes/admin/settings-help.php:160
-msgid "This integration also works when you load the player script from the official mave CDN (debug setting). The script is deferred until consent in both cases."
-msgstr "Die Integration funktioniert auch mit dem offiziellen mave-CDN (Debug-Einstellung). Das Skript wird in beiden Fällen bis zur Einwilligung verzögert."
+#: includes/admin/settings-help.php:217
+msgid "Save settings and test in a private browser window."
+msgstr ""
 
-#: includes/admin/settings-help.php:161
+#: includes/admin/settings-help.php:221
+msgid "The integration also works when you load the player script from the official mave CDN. The script is deferred until consent in both cases."
+msgstr "Die Integration funktioniert auch mit dem offiziellen mave-CDN. Das Skript wird in beiden Fällen bis zur Einwilligung verzögert."
+
+#: includes/admin/settings-help.php:222
 msgid "If Borlabs Cookie is active and its content blocker integration is enabled, Borlabs takes precedence and Real Cookie Banner integration is skipped."
 msgstr "Ist Borlabs Cookie aktiv und die Content-Blocker-Integration eingeschaltet, hat Borlabs Vorrang; die Real-Cookie-Banner-Integration entfällt."
 
-#: includes/admin/settings-help.php:164
+#: includes/admin/settings-help.php:225
 msgid "Real Cookie Banner is not active on this site. Install and activate it before using this integration."
 msgstr "Real Cookie Banner ist auf dieser Website nicht aktiv. Vor der Integration installieren und aktivieren."
 
-#: includes/admin/settings-help.php:176
+#: includes/admin/settings-help.php:237
 msgid "More information"
 msgstr "Weitere Informationen"
 
-#: includes/admin/settings-help.php:177
+#: includes/admin/settings-help.php:238
 msgid "mave.io player documentation"
 msgstr "mave.io Player-Dokumentation"
 
-#: includes/admin/settings-help.php:178
+#: includes/admin/settings-help.php:239
 #: includes/integrations/real-cookie-banner.php:138
 msgid "mave.io privacy policy"
 msgstr "mave.io Datenschutzerklärung"
 
-#: includes/admin/settings-help.php:179
+#: includes/admin/settings-help.php:240
 msgid "Plugin on GitHub"
 msgstr "Plugin auf GitHub"
 
@@ -520,11 +652,11 @@ msgstr "Die Borlabs-Cookie-API ist in dieser Anfrage nicht verfügbar. Einstellu
 msgid "Content blocker ID"
 msgstr "Content-Blocker-ID"
 
-#. translators: 1: default content blocker ID, 2: privacy policy URL
+#. translators: 1: default content blocker ID, 2: privacy policy URL, 3: comma-separated hostnames
 #: includes/admin/settings-page.php:588
 #, php-format
-msgid "Create a content blocker in Borlabs Cookie with this ID (default: %1$s). Assign it to the <strong>External Media</strong> service group. Privacy policy: <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">mave.io privacy</a>. Suggested hostnames: %3$s."
-msgstr "In Borlabs Cookie einen Content Blocker mit dieser ID anlegen (Standard: %1$s). Der Service-Gruppe <strong>Externe Medien</strong> zuordnen. Datenschutzerklärung: <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">mave.io Datenschutz</a>. Vorgeschlagene Hostnames: %3$s."
+msgid "Requires a Borlabs provider, service (External Media), and content blocker with this ID (default: %1$s). See the Help tab for the full setup. Privacy policy: <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">mave.io privacy</a>. Suggested hostnames: %3$s."
+msgstr "Erfordert einen Borlabs-Provider, Service (Externe Medien) und Content Blocker mit dieser ID (Standard: %1$s). Vollständige Anleitung im Hilfe-Tab. Datenschutzerklärung: <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">mave.io Datenschutz</a>. Vorgeschlagene Hostnames: %3$s."
 
 #: includes/admin/settings-page.php:607
 msgid "Defer mave player embeds until external media is allowed. mave.io does not use tracking cookies; assign the service to your external media group."

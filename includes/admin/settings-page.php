@@ -584,9 +584,9 @@ final class Settings_Page {
 								<?php
 								echo wp_kses_post(
 									sprintf(
-										/* translators: 1: default content blocker ID, 2: privacy policy URL */
+										/* translators: 1: default content blocker ID, 2: privacy policy URL, 3: comma-separated hostnames */
 										__(
-											'Create a content blocker in Borlabs Cookie with this ID (default: %1$s). Assign it to the <strong>External Media</strong> service group. Privacy policy: <a href="%2$s" target="_blank" rel="noopener noreferrer">mave.io privacy</a>. Suggested hostnames: %3$s.',
+											'Requires a Borlabs provider, service (External Media), and content blocker with this ID (default: %1$s). See the Help tab for the full setup. Privacy policy: <a href="%2$s" target="_blank" rel="noopener noreferrer">mave.io privacy</a>. Suggested hostnames: %3$s.',
 											'we-mave-video'
 										),
 										esc_html( Borlabs_Cookie::CONTENT_BLOCKER_ID ),

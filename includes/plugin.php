@@ -71,6 +71,24 @@ final class Plugin {
 
 		Borlabs_Cookie::register_hooks();
 		Real_Cookie_Banner::register_hooks();
+
+		Vendor_Storage::repair_installation_state();
+		$this->ensure_player_bundle_available();
+	}
+
+	/**
+	 * Re-download the player bundle when metadata points to a removed in-plugin copy.
+	 *
+	 * @return void
+	 */
+	private function ensure_player_bundle_available(): void {
+		$updater = new Asset_Updater();
+
+		if ( $updater->is_ready() || $updater->is_using_cdn() ) {
+			return;
+		}
+
+		$updater->maybe_update( true );
 	}
 
 	/**
@@ -88,6 +106,8 @@ final class Plugin {
 		}
 
 		$updater = new Asset_Updater();
+		Vendor_Storage::repair_installation_state();
+
 		if ( ! $updater->is_ready() ) {
 			$updater->maybe_update( true );
 		}

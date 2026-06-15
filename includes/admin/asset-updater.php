@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Webentwicklerin\WeMaveVideo\Admin;
 
 use Webentwicklerin\WeMaveVideo\Options;
+use Webentwicklerin\WeMaveVideo\Vendor_Storage;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -23,17 +24,16 @@ final class Asset_Updater {
 	private const REGISTRY_URL    = 'https://registry.npmjs.org/@maveio/components/latest';
 	private const CDN_ESM_URL     = 'https://cdn.jsdelivr.net/npm/@maveio/components@%s/+esm';
 	public const OFFICIAL_CDN_URL = 'https://cdn.video-dns.com/npm/@maveio/components/+esm';
-	private const VENDOR_SUBDIR  = 'assets/vendor/mave-components';
 	private const ENTRY_RELATIVE = 'mave-components.esm.js';
 	private const LEGACY_ENTRY   = 'dist/index.js';
 
 	/**
-	 * Vendor root inside the plugin directory.
+	 * Vendor root in uploads (persists across plugin updates).
 	 *
 	 * @return string
 	 */
 	public function get_vendor_root(): string {
-		return trailingslashit( WE_MAVE_VIDEO_PATH . self::VENDOR_SUBDIR );
+		return Vendor_Storage::get_root();
 	}
 
 	/**
@@ -272,10 +272,7 @@ final class Asset_Updater {
 			return '';
 		}
 
-		$relative = str_replace( WE_MAVE_VIDEO_PATH, '', trailingslashit( $path ) . $entry );
-		$relative = ltrim( str_replace( '\\', '/', $relative ), '/' );
-
-		return trailingslashit( WE_MAVE_VIDEO_URL ) . $relative;
+		return Vendor_Storage::path_to_public_url( trailingslashit( $path ) . $entry );
 	}
 
 	/**

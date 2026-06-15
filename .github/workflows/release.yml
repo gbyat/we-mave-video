@@ -136,6 +136,9 @@ jobs:
             if [ -d assets/blocks ]; then
               cp -r assets/blocks "${PLUGIN_DIR}/assets/"
             fi
+            if [ -d assets/frontend ]; then
+              cp -r assets/frontend "${PLUGIN_DIR}/assets/"
+            fi
           fi
           if [ -d languages ]; then
             cp -r languages "${PLUGIN_DIR}/"

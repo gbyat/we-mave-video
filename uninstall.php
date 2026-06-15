@@ -23,6 +23,17 @@ if ( is_dir( $vendor_root ) ) {
 	we_mave_video_delete_directory( $vendor_root );
 }
 
+$upload_dir = wp_upload_dir();
+$uploads_vendor_root = trailingslashit( $upload_dir['basedir'] ) . 'we-mave-video/mave-components/';
+if ( is_dir( $uploads_vendor_root ) ) {
+	we_mave_video_delete_directory( $uploads_vendor_root );
+}
+
+$uploads_plugin_root = trailingslashit( $upload_dir['basedir'] ) . 'we-mave-video/';
+if ( is_dir( $uploads_plugin_root ) ) {
+	we_mave_video_delete_directory( $uploads_plugin_root );
+}
+
 /**
  * Recursively delete a directory.
  *
