@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WE Mave Video 1.0.3\n"
+"Project-Id-Version: WE Mave Video 1.0.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/we-mave-video\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: webentwicklerin, Gabriele Laesser\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-15T08:45:52+00:00\n"
+"POT-Creation-Date: 2026-06-15T09:11:56+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -182,198 +182,198 @@ msgid "Update now"
 msgstr "Jetzt aktualisieren"
 
 #: includes/admin/settings-page.php:397
-msgid "Plugin updates"
-msgstr "Plugin-Updates"
-
-#: includes/admin/settings-page.php:400
-msgid "GitHub auto updates"
-msgstr "Automatische GitHub-Updates"
-
-#: includes/admin/settings-page.php:403
-msgid "Disabled"
-msgstr "Deaktiviert"
-
-#: includes/admin/settings-page.php:404
-msgid "Enabled"
-msgstr "Aktiviert"
-
-#. translators: %s: GitHub repository slug
-#: includes/admin/settings-page.php:411
-#, php-format
-msgid "Check for plugin updates from <a href=\"https://github.com/%s/releases\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub releases</a>. This updates the WordPress plugin only, not the self-hosted mave components."
-msgstr "Prüft Plugin-Updates über <a href=\"https://github.com/%s/releases\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub Releases</a>. Aktualisiert nur das WordPress-Plugin, nicht die selbst gehosteten mave-Komponenten."
-
-#: includes/admin/settings-page.php:424
 msgid "Update schedule"
 msgstr "Update-Zeitplan"
 
-#: includes/admin/settings-page.php:427
+#: includes/admin/settings-page.php:400
 msgid "Schedule"
 msgstr "Zeitplan"
 
-#: includes/admin/settings-page.php:430
+#: includes/admin/settings-page.php:403
 msgid "Daily"
 msgstr "Täglich"
 
-#: includes/admin/settings-page.php:431
+#: includes/admin/settings-page.php:404
 msgid "Weekly"
 msgstr "Wöchentlich"
 
-#: includes/admin/settings-page.php:432
+#: includes/admin/settings-page.php:405
 msgid "Monthly"
 msgstr "Monatlich"
 
-#: includes/admin/settings-page.php:433
+#: includes/admin/settings-page.php:406
 msgid "Manual only"
 msgstr "Nur manuell"
 
-#: includes/admin/settings-page.php:438
+#: includes/admin/settings-page.php:411
 msgid "Automatic updates"
 msgstr "Automatische Updates"
 
-#: includes/admin/settings-page.php:442
+#: includes/admin/settings-page.php:415
 msgid "Download and replace components automatically when a newer version is found."
 msgstr "Komponenten automatisch herunterladen und ersetzen, wenn eine neuere Version gefunden wird."
 
-#: includes/admin/settings-page.php:447
+#: includes/admin/settings-page.php:420
 msgid "Load script globally"
 msgstr "Skript global laden"
 
-#: includes/admin/settings-page.php:451
+#: includes/admin/settings-page.php:424
 msgid "Enqueue the player script on every front-end page (not recommended)."
 msgstr "Das Player-Skript auf jeder Frontend-Seite laden (nicht empfohlen)."
 
-#: includes/admin/settings-page.php:456
+#: includes/admin/settings-page.php:429
 msgid "Load from official CDN"
 msgstr "Vom offiziellen CDN laden"
 
-#: includes/admin/settings-page.php:460
+#: includes/admin/settings-page.php:433
 msgid "Load the player script from the official mave CDN instead of the self-hosted copy."
 msgstr "Das Player-Skript vom offiziellen mave-CDN statt aus der selbst gehosteten Kopie laden."
 
 #. translators: %s: official CDN script URL
-#: includes/admin/settings-page.php:467
+#: includes/admin/settings-page.php:440
 #, php-format
 msgid "Use this only for debugging: compare player behavior against the reference implementation documented at <a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">mave.io</a>. The script is loaded from <code>%2$s</code>. Disable again for production self-hosting."
 msgstr "Nur zum Debuggen verwenden: Player-Verhalten mit der Referenzimplementierung auf <a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">mave.io</a> vergleichen. Das Skript wird von <code>%2$s</code> geladen. Für produktives Self-Hosting wieder deaktivieren."
 
-#: includes/admin/settings-page.php:481
+#: includes/admin/settings-page.php:454
 msgid "Player defaults"
 msgstr "Player-Standardwerte"
 
-#: includes/admin/settings-page.php:482
+#: includes/admin/settings-page.php:455
 msgid "These defaults apply to every embed unless overridden by shortcode or block attributes."
 msgstr "Diese Standardwerte gelten für jedes Embed, sofern sie nicht per Shortcode oder Block überschrieben werden."
 
-#: includes/admin/settings-page.php:485
+#: includes/admin/settings-page.php:458
 #: assets/blocks/player/index.js:40
 msgid "Aspect ratio"
 msgstr "Seitenverhältnis"
 
-#: includes/admin/settings-page.php:489
+#: includes/admin/settings-page.php:462
 #: assets/blocks/player/index.js:62
 msgid "Autoplay"
 msgstr "Autoplay"
 
-#: includes/admin/settings-page.php:492
-#: includes/admin/settings-page.php:555
+#: includes/admin/settings-page.php:465
+#: includes/admin/settings-page.php:528
 #: assets/blocks/player/index.js:66
 #: assets/blocks/player/index.js:157
 msgid "Off"
 msgstr "Aus"
 
-#: includes/admin/settings-page.php:493
+#: includes/admin/settings-page.php:466
 #: assets/blocks/player/index.js:67
 msgid "Always"
 msgstr "Immer"
 
-#: includes/admin/settings-page.php:494
+#: includes/admin/settings-page.php:467
 #: assets/blocks/player/index.js:68
 msgid "When in view"
 msgstr "Wenn sichtbar"
 
-#: includes/admin/settings-page.php:499
+#: includes/admin/settings-page.php:472
 #: assets/blocks/player/index.js:75
 msgid "Controls"
 msgstr "Steuerung"
 
-#: includes/admin/settings-page.php:502
+#: includes/admin/settings-page.php:475
 #: assets/blocks/player/index.js:79
 msgid "Full"
 msgstr "Vollständig"
 
-#: includes/admin/settings-page.php:503
+#: includes/admin/settings-page.php:476
 #: assets/blocks/player/index.js:80
 msgid "Big"
 msgstr "Groß"
 
-#: includes/admin/settings-page.php:504
+#: includes/admin/settings-page.php:477
 #: assets/blocks/player/index.js:81
 msgid "None"
 msgstr "Keine"
 
-#: includes/admin/settings-page.php:509
+#: includes/admin/settings-page.php:482
 #: assets/blocks/player/index.js:88
 msgid "Controls color"
 msgstr "Steuerungsfarbe"
 
-#: includes/admin/settings-page.php:513
+#: includes/admin/settings-page.php:486
 #: assets/blocks/player/index.js:96
 msgid "Color opacity"
 msgstr "Farbdeckkraft"
 
-#: includes/admin/settings-page.php:517
+#: includes/admin/settings-page.php:490
 #: assets/blocks/player/index.js:108
 msgid "Loop"
 msgstr "Schleife"
 
-#: includes/admin/settings-page.php:521
+#: includes/admin/settings-page.php:494
 msgid "Loop playback"
 msgstr "Wiedergabe wiederholen"
 
-#: includes/admin/settings-page.php:526
+#: includes/admin/settings-page.php:499
 #: assets/blocks/player/index.js:115
 msgid "Poster URL"
 msgstr "Poster-URL"
 
-#: includes/admin/settings-page.php:530
+#: includes/admin/settings-page.php:503
 #: assets/blocks/player/index.js:122
 msgid "Subtitles"
 msgstr "Untertitel"
 
-#: includes/admin/settings-page.php:534
+#: includes/admin/settings-page.php:507
 #: assets/blocks/player/index.js:130
 msgid "Theme"
 msgstr "Theme"
 
-#: includes/admin/settings-page.php:538
+#: includes/admin/settings-page.php:511
 #: assets/blocks/player/index.js:137
 msgid "Quality"
 msgstr "Qualität"
 
-#: includes/admin/settings-page.php:541
+#: includes/admin/settings-page.php:514
 msgid "Highest available"
 msgstr "Höchste verfügbare"
 
-#: includes/admin/settings-page.php:551
+#: includes/admin/settings-page.php:524
 #: assets/blocks/player/index.js:152
 msgid "Audio tracks"
 msgstr "Audiospuren"
 
-#: includes/admin/settings-page.php:554
+#: includes/admin/settings-page.php:527
 #: assets/blocks/player/index.js:156
 msgid "Auto"
 msgstr "Automatisch"
 
-#: includes/admin/settings-page.php:560
+#: includes/admin/settings-page.php:533
 #: assets/blocks/player/index.js:48
 msgid "Width (px)"
 msgstr "Breite (px)"
 
-#: includes/admin/settings-page.php:564
+#: includes/admin/settings-page.php:537
 #: assets/blocks/player/index.js:55
 msgid "Height (px)"
 msgstr "Höhe (px)"
+
+#: includes/admin/settings-page.php:542
+msgid "Plugin updates"
+msgstr "Plugin-Updates"
+
+#: includes/admin/settings-page.php:545
+msgid "GitHub auto updates"
+msgstr "Automatische GitHub-Updates"
+
+#: includes/admin/settings-page.php:548
+msgid "Enabled"
+msgstr "Aktiviert"
+
+#: includes/admin/settings-page.php:549
+msgid "Disabled"
+msgstr "Deaktiviert"
+
+#. translators: %s: GitHub repository slug
+#: includes/admin/settings-page.php:556
+#, php-format
+msgid "Check for plugin updates from <a href=\"https://github.com/%s/releases\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub releases</a>. This updates the WordPress plugin only, not the self-hosted mave components."
+msgstr "Prüft Plugin-Updates über <a href=\"https://github.com/%s/releases\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub Releases</a>. Aktualisiert nur das WordPress-Plugin, nicht die selbst gehosteten mave-Komponenten."
 
 #: includes/admin/settings-page.php:569
 msgid "Save settings"
